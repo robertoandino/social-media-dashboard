@@ -9,11 +9,11 @@ function DashboardLayout({ children }) {
     }
 
     return (
-        <div className="flex h-screen overflow-hidden">
+        <div className="flex h-screen overflow-hidden bg-gray-900">
             <div
                 className={`
                     transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
-                    transition-transform duration-300 ease-in-out bg-gray-900 w-64
+                    transition-transform duration-300 ease-in-out bg-gray-800 w-64
                     h-full text-white fixed top-0 left-0 z-10
                 `}
             >
@@ -29,7 +29,7 @@ function DashboardLayout({ children }) {
                 <button
                     onClick={toggleSidebar}
                     className={`
-                        fixed left-4 top-1/2 transform -translate-y-1/2 p-2 bg-blue-700
+                        fixed left-4 top-1/2 transform -translate-y-1/2 p-2 bg-blue-900
                         text-white rounded-full z-20 transition-all duration-300
                         ${isSidebarOpen ? "w-12 h-12" : "w-8 h-8"}
                     `}
@@ -37,11 +37,11 @@ function DashboardLayout({ children }) {
                     {isSidebarOpen ? ">" : "<"}
                 </button>
                 
-                <header className="p-4 bg-blue-500 text-white">
+                <header className="p-4 bg-blue-900 text-white">
                     <h1 className="text-xl">Dashboard</h1>
                 </header>
 
-                <main className="flex-1 p-6 bg-gray-100 overflow-x-hidden">
+                <main className="flex-1 p-6 bg-gray-800 text-white overflow-x-hidden">
                     {children}
                 </main>
             </div>
