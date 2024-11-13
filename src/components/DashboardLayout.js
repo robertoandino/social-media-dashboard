@@ -1,11 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 
 function DashboardLayout({ children }) {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen)
+    }
+
     return (
-        <div className="flex">
-            <Sidebar />
-            <main className="flex-1 p-6 bg-gray-100">{children}</main>
+        <div className="flex h-screen overflow-hidden">
+            <div
+                className={`
+                    transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
+                    transition-transform duration-300 ease-in-out bg-gray-900 w-64
+                    h-full text-white fixed top-0 left-0 z-10
+                `}
+            >
+                <Sidebar />
+            </div>
+
+            <div 
+                className={`
+                    flex-1 flex flex-col overflow-y-auto transition-all 
+                    duration-300 ${isSidebarOpen ? "ml-64" : "ml-0"}
+                `}
+            > 
+                <button
+                    onClick={toggleSidebar}
+                    className={`
+                        fixed left-4 top-1/2 transform -translate-y-1/2 p-2 bg-blue-700
+                        text-white rounded-full z-20 transition-all duration-300
+                        ${isSidebarOpen ? "w-12 h-12" : "w-8 h-8"}
+                    `}
+                >
+                    {isSidebarOpen ? ">" : "<"}
+                </button>
+                
+                <header className="p-4 bg-blue-500 text-white">
+                    <h1 className="text-xl">Dashboard</h1>
+                </header>
+
+                <main className="flex-1 p-6 bg-gray-100 overflow-x-hidden">
+                    {children}
+                </main>
+            </div>
         </div>
     );
 }
