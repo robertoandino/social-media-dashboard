@@ -1,9 +1,19 @@
-import logo from './logo.svg';
+import React from 'react';
+import DashboardLayout from './components/DashboardLayout';
+import Navbar from './components/Navbar';
+import Feed from './components/Feed';
+import Analytics from './components/Analytics';
 import './App.css';
 
 function App() {
   return (
-    <p>Under Construction</p>
+    <DashboardLayout>
+      <Navbar />
+      <div className="space-y-6">
+        <Feed />
+        <Analytics />
+      </div>
+    </DashboardLayout>
   );
 }
 
