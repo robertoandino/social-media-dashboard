@@ -7,8 +7,8 @@ function Feed() {
     ];
 
     return (
-        <div className="mt-4 p-4 bg-white rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Feed</h2>
+        <div className="mt-4 p-4 bg-black rounded-lg shadow-lg">
+            <h2 className="text-xl font-bold mb-4">Feed</h2>
             {posts.map(post => (
                 <div key={post.id} className="p-4 border-b last:border-none">
                     <p>{post.content}</p>

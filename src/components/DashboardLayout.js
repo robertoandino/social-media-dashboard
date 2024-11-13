@@ -38,10 +38,6 @@ function DashboardLayout({ children }) {
                         {isSidebarOpen ? ">" : "<"}
                     </div>
                 </button>
-                
-                <header className="p-4 bg-blue-900 text-white">
-                    <h1 className="text-xl">Dashboard</h1>
-                </header>
 
                 <main className="flex-1 p-6 bg-gray-800 text-white overflow-x-hidden">
                     {children}

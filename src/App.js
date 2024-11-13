@@ -10,8 +10,8 @@ function App() {
     <DashboardLayout>
       <Navbar />
       <div className="space-y-6">
-        <Feed />
         <Analytics />
+        <Feed />
       </div>
     </DashboardLayout>
   );
