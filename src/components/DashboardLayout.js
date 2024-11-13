@@ -34,7 +34,9 @@ function DashboardLayout({ children }) {
                         ${isSidebarOpen ? "w-12 h-12" : "w-8 h-8"}
                     `}
                 >
-                    {isSidebarOpen ? ">" : "<"}
+                    <div className="flex items-center justify-center w-full h-full">
+                        {isSidebarOpen ? ">" : "<"}
+                    </div>
                 </button>
                 
                 <header className="p-4 bg-blue-900 text-white">
