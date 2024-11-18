@@ -30,7 +30,7 @@ function DashboardLayout({ children }) {
                 <button
                     onClick={toggleSidebar}
                     className={`
-                        fixed left-4 top-1/2 transform -translate-y-1/2 p-2 bg-black
+                        fixed left-4 top-1/2 transform -translate-y-1/2 p-2 bg-gray-700
                         text-white rounded-full z-20 transition-all duration-300
                         ${isSidebarOpen ? "w-12 h-12" : "w-8 h-8"}
                     `}
