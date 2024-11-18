@@ -2,7 +2,7 @@ import React from 'react';
 
 function Navbar() {
     return (
-        <div className="flex justify-between items-center p-4 bg-black shadow-md">
+        <div className="flex justify-between items-center p-4 bg-gray-800 shadow-md">
             <input
                 type="text"
                 placeholder="Search..."

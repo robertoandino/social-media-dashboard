@@ -2,7 +2,7 @@ import React from 'react';
 
 function Analytics(){
     return(
-        <div className="mt-4 p-4 bg-black rounded-lg shadow-lg">
+        <div className="mt-4 p-4 bg-gray-700 rounded-lg shadow-lg">
             <h2 className="text-xl font-semibold mb-4">Analytics</h2>
             <div className="flex space-x-4">
                 <div className="flex-1 bg-blue-400 p-4 rounded text-center">

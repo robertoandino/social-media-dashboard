@@ -2,7 +2,7 @@ import React from 'react';
 
 function ProfileCard(){
     return(
-        <div className="bg-gray-800 text-white p-6 rounded-lg shadow-lg max-w-sm">
+        <div className="bg-gray-700 text-white p-6 rounded-lg shadow-lg max-w-sm">
             <div className="flex items-center space-x-4">
                 <img
                     src="https://via.placeholder.com/100"
