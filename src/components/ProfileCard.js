@@ -1,11 +1,12 @@
 import React from 'react';
+import Avatar3 from '../pics/adventurer-1731961910274.svg';
 
 function ProfileCard(){
     return(
         <div className="bg-gray-700 text-white p-6 rounded-lg shadow-lg max-w-sm">
             <div className="flex items-center space-x-4">
                 <img
-                    src="https://via.placeholder.com/100"
+                    src={Avatar3}
                     alt="Profile"
                     className="w-20 h-20 rounded-full"
                 />

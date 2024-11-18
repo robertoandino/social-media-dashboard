@@ -1,11 +1,14 @@
 import React from 'react';
+import Avatar1 from '../pics/adventurer-1731961900547.svg';
+import Avatar2 from '../pics/adventurer-1731961906649.svg';
+
 
 function Feed() {
     const posts = [
         { 
             id: 1,
             user: "Alice",
-            avatar: "https://via.placeholder.com/40",    
+            avatar: Avatar1,    
             content: "Just posted a new blog!",
             timestamp: "2 hours ago",
             likes: 10,
@@ -14,7 +17,7 @@ function Feed() {
         { 
             id: 2,
             user: "Bob",
-            avatar: "https://via.placeholder.com/40", 
+            avatar: Avatar2, 
             content: "Check out my latest travel photos.",
             timestamp: "5 hours ago",
             likes: 25,
