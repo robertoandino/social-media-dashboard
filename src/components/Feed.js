@@ -27,8 +27,23 @@ function Feed() {
             <h2 className="text-xl font-bold mb-4">Feed</h2>
             <div className="space-y-4 max-h-96 overflow-y-auto">
                 {posts.map(post => (
-                    <div>
-                        
+                    <div
+                        key={post.id}
+                        className="p-4 bg-gray-800 rounded-lg shadow-mg flex items-start space-x-4"
+                    >
+                        <img
+                            src={post.avatar}
+                            alt={`${post.user}'s avatar`}
+                            className="w-10 h-10 rounded-full"
+                        />
+
+                        <div className="flex-1">
+                            <div className="flex justify-between items-center">
+                                <h3 className="text-sm font-bold text-white">{post.user}</h3>
+                                <span className="text-xs text-gray-400">{post.timestamp}</span>
+                            </div>
+                            <p className="text-gray-4300 mt-2">{post.content}</p>
+                        </div>
                     </div>
                 ))}
             </div>
