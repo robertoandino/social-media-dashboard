@@ -1,5 +1,10 @@
 import React from 'react';
 import Avatar3 from '../pics/adventurer-1731961910274.svg';
+import bird from '../profilePics/bird.jpg'
+import goat from '../profilePics/goat.jpg'
+import horse from '../profilePics/horse.jpg'
+import dog from '../profilePics/frenchDog.jpg'
+import plane from '../profilePics/plane.jpg'
 
 function ProfileCard(){
     return(
@@ -31,6 +36,17 @@ function ProfileCard(){
                     <p className="text-lg font-semibold">523</p>
                     <p className="text-gray-400">Likes</p>
                 </div>
+            </div>
+
+            <div className="mt-6 flex justify-center space-x-6">
+                <img src={bird} alt="bird" className="w-24 h-24 rounded-lg" />
+                <img src={goat} alt="bird" className="w-24 h-24 rounded-lg" />
+                <img src={horse} alt="bird" className="w-24 h-24 rounded-lg" />
+            </div>
+
+            <div className="mt-6 flex justify-center space-x-6">
+                <img src={dog} alt="bird" className="w-24 h-24 rounded-lg" />
+                <img src={plane} alt="bird" className="w-24 h-24 rounded-lg" />
             </div>
         </div>
     );
