@@ -14,6 +14,25 @@ function ProfileCard(){
                     <p className="text-gray-400">Software Developer</p>
                 </div>
             </div>
+            <div className="mt-4">
+                <p className="text-gray-300">"Striving for greatness one line of code at a time."</p>
+            </div>
+            <div className="mt-6 flex justify-between text-center">
+                <div>
+                    <p className="text-lg font-semibold">1.2k</p>
+                    <p className="text-gray-400">Followers</p>
+                </div>
+                <div>
+                    <p className="text-lg font-semibold">87</p>
+                    <p className="text-gray-400">Posts</p>
+                </div>
+                <div>
+                    <p className="text-lg font-semibold">523</p>
+                    <p className="text-gray-400">Likes</p>
+                </div>
+            </div>
         </div>
-    )
+    );
 }
+
+export default ProfileCard;
