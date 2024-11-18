@@ -43,6 +43,21 @@ function Feed() {
                                 <span className="text-xs text-gray-400">{post.timestamp}</span>
                             </div>
                             <p className="text-gray-4300 mt-2">{post.content}</p>
+
+                            <div className="flex space-x-4 mt-4">
+                                <button
+                                    className="text-sm text-blue-400 hover:underline flex items-center space-x-1"
+                                >
+                                    <span>👍</span>
+                                    <span>{post.likes} Likes</span>
+                                </button>
+                                <button
+                                    className="text-sm text-blue-400 hover:underline flex items-center space-x-1"
+                                >
+                                    <span>💬</span>
+                                    <span>{post.comments} Comments</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 ))}
