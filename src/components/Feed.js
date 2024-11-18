@@ -34,11 +34,15 @@ function Feed() {
                         key={post.id}
                         className="p-4 bg-gray-800 rounded-lg shadow-mg flex items-start space-x-4"
                     >
-                        <img
-                            src={post.avatar}
-                            alt={`${post.user}'s avatar`}
-                            className="w-10 h-10 rounded-full"
-                        />
+                        <div className="p-0.5 rounded-full bg-gradient-to-r from-orange-500 via-red-500 to-orange-600">
+                            <div className="border border-gray-700 rounded-full p-3 bg-gray-800">
+                                <img
+                                    src={post.avatar}
+                                    alt={`${post.user}'s avatar`}
+                                    className="w-10 h-10 rounded-full"
+                                />
+                            </div>
+                        </div>
 
                         <div className="flex-1">
                             <div className="flex justify-between items-center">
