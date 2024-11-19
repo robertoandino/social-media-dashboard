@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar3 from '../pics/adventurer-1731961910274.svg';
 import bird from '../profilePics/bird.jpg'
 import goat from '../profilePics/goat.jpg'
@@ -6,8 +6,17 @@ import horse from '../profilePics/horse.jpg'
 import dog from '../profilePics/frenchDog.jpg'
 import plane from '../profilePics/plane.jpg'
 
-function ProfileCard(){
-    return(
+function ProfileCard() {
+
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const images = [bird, goat, horse, dog, plane];
+
+    const handleImageClick = (image) => {
+        setSelectedImage(image)
+    }
+  
+    return (
         <div className="bg-gray-700 text-white p-6 rounded-lg shadow-lg max-w-sm">
             <div className="flex items-center space-x-4">
                 <div className="p-0.5 rounded-full bg-gradient-to-r from-orange-500 via-red-500 to-orange-600">
@@ -43,16 +52,29 @@ function ProfileCard(){
             </div>
 
             <div className="mt-6 flex justify-center space-x-6">
-                <img src={bird} alt="bird" className="w-24 h-24 rounded-lg" />
-                <img src={goat} alt="bird" className="w-24 h-24 rounded-lg" />
-                <img src={horse} alt="bird" className="w-24 h-24 rounded-lg" />
+                {images.slice(0, 3).map((img, index) => (
+                    <img
+                        key={index}
+                        src={img}
+                        alt={`pix-${index}`}
+                        className="w-24 h-24 rounded-lg cursor-pointer
+                             transform transition-transform duration-300 hover:scale-110"
+                    />
+                ))}
             </div>
-
             <div className="mt-6 flex justify-center space-x-6">
-                <img src={dog} alt="bird" className="w-24 h-24 rounded-lg" />
-                <img src={plane} alt="bird" className="w-24 h-24 rounded-lg" />
+                {images.slice(3).map((img, index) => (
+                    <img
+                        key={index}
+                        src={img}
+                        alt={`pic-${index + 3}`}
+                        className="w-24 h-24 rounded-lg cursor-pointer
+                                transform transition-transform duration-300 hover:scale-110"
+                    />
+                ))}
             </div>
         </div>
+        
     );
 }
 
