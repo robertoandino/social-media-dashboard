@@ -1,7 +1,7 @@
 import React from 'react';
 import Avatar1 from '../pics/adventurer-1731961900547.svg';
 import Avatar2 from '../pics/adventurer-1731961906649.svg';
-
+import Avatar3 from '../pics/adventurer-1731961910274.svg';
 
 function Feed() {
     const posts = [
@@ -13,6 +13,7 @@ function Feed() {
             timestamp: "2 hours ago",
             likes: 10,
             comments: 2,
+            color: "yellow",
         },
         { 
             id: 2,
@@ -22,6 +23,17 @@ function Feed() {
             timestamp: "5 hours ago",
             likes: 25,
             comments: 4,
+            color: "purple"
+        },
+        { 
+            id: 3,
+            user: "John",
+            avatar: Avatar3, 
+            content: "HahahhhsHSAS.",
+            timestamp: "7 hours ago",
+            likes: 10210,
+            comments: 323,
+            color: "red"
         },
     ];
 
@@ -34,7 +46,10 @@ function Feed() {
                         key={post.id}
                         className="p-4 bg-gray-800 rounded-lg shadow-mg flex items-start space-x-4"
                     >
-                        <div className="p-0.5 rounded-full bg-gradient-to-r from-orange-500 via-red-500 to-orange-600">
+                        <div className={`p-0.5 rounded-full bg-gradient-to-r 
+                                ${post.color === "red" ? "from-yellow-500 via-orange-500 to-red-500" : 
+                                post.color === "purple" ?  "from-purple-500 via-indigo-500" :
+                                "from-yellow-500 via-black-500"}`}>
                             <div className="border border-gray-700 rounded-full p-3 bg-gray-800">
                                 <img
                                     src={post.avatar}

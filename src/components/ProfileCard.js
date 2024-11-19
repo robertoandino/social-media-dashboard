@@ -19,7 +19,7 @@ function ProfileCard() {
     return (
         <div className="bg-gray-700 text-white p-6 rounded-lg shadow-lg max-w-sm">
             <div className="flex items-center space-x-4">
-                <div className="p-0.5 rounded-full bg-gradient-to-r from-orange-500 via-red-500 to-orange-600">
+                <div className="p-0.5 rounded-full bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500">
                     <div className="border-2 border-gray-700 rounded-full p-3 bg-gray-700">
                         <img
                             src={Avatar3}
