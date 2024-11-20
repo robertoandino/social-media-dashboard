@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DashboardLayout from './components/DashboardLayout';
 import Navbar from './components/Navbar';
 import Feed from './components/Feed';
-import Analytics from './components/Analytics';
+import CreatePost from './components/CreatePost';
 import ProfileCard from './components/ProfileCard';
 import './App.css';
 import Avatar1 from './pics/adventurer-1731961900547.svg';
@@ -67,7 +67,7 @@ function App() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         <ProfileCard user={selectedUser}/>
         <div className="lg:col-span-2 space-y-6">
-          <Analytics />
+          <CreatePost />
           <Feed posts={users} onUserClick={setSelectedUser}/>
         </div>
       </div>
