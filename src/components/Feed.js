@@ -1,50 +1,16 @@
 import React from 'react';
-import Avatar1 from '../pics/adventurer-1731961900547.svg';
-import Avatar2 from '../pics/adventurer-1731961906649.svg';
-import Avatar3 from '../pics/adventurer-1731961910274.svg';
 
-function Feed() {
-    const posts = [
-        { 
-            id: 1,
-            user: "Alice",
-            avatar: Avatar1,    
-            content: "Just posted a new blog!",
-            timestamp: "2 hours ago",
-            likes: 10,
-            comments: 2,
-            color: "yellow",
-        },
-        { 
-            id: 2,
-            user: "Bob",
-            avatar: Avatar2, 
-            content: "Check out my latest travel photos.",
-            timestamp: "5 hours ago",
-            likes: 25,
-            comments: 4,
-            color: "purple"
-        },
-        { 
-            id: 3,
-            user: "John",
-            avatar: Avatar3, 
-            content: "HahahhhsHSAS.",
-            timestamp: "7 hours ago",
-            likes: 10210,
-            comments: 323,
-            color: "red"
-        },
-    ];
-
+function Feed({ posts, onUserClick }) {
     return (
         <div className="mt-4 p-4 bg-gray-700 rounded-lg shadow-lg">
-            <h2 className="text-xl font-bold mb-4">Feed</h2>
+            <h2 className="text-xl font-bold mb-4">Net</h2>
             <div className="space-y-4 max-h-96 overflow-y-auto">
                 {posts.map(post => (
+                    /*User's Icon*/
                     <div
                         key={post.id}
-                        className="p-4 bg-gray-800 rounded-lg shadow-mg flex items-start space-x-4"
+                        className="p-4 bg-gray-800 rounded-lg shadow-mg flex items-start space-x-4 cursor-pointer"
+                        onClick={() => onUserClick(post)}
                     >
                         <div className={`p-0.5 rounded-full bg-gradient-to-r 
                                 ${post.color === "red" ? "from-yellow-500 via-orange-500 to-red-500" : 
@@ -58,7 +24,7 @@ function Feed() {
                                 />
                             </div>
                         </div>
-
+                        {/*User's Post*/}
                         <div className="flex-1">
                             <div className="flex justify-between items-center">
                                 <h3 className="text-sm font-bold text-white">{post.user}</h3>

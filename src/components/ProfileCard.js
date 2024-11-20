@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import Avatar3 from '../pics/adventurer-1731961910274.svg';
 import bird from '../profilePics/bird.jpg'
 import goat from '../profilePics/goat.jpg'
 import horse from '../profilePics/horse.jpg'
 import dog from '../profilePics/frenchDog.jpg'
 
-function ProfileCard() {
+function ProfileCard({ user }) {
 
     const [selectedImage, setSelectedImage] = useState(null);
     const [isAnimating, setIsAnimating] = useState(false);
@@ -30,15 +29,15 @@ function ProfileCard() {
                                 from-yellow-500 via-orange-500 to-red-500">
                     <div className="border-2 border-gray-700 rounded-full p-3 bg-gray-700">
                         <img
-                            src={Avatar3}
+                            src={user.avatar}
                             alt="Profile"
                             className="w-20 h-20 rounded-full"
                         />
                     </div>
                 </div>
                 <div>
-                    <h2 className="text-xl font-bold">John Doe</h2>
-                    <p className="text-gray-400">Software Developer</p>
+                    <h2 className="text-xl font-bold">{user.user}</h2>
+                    <p className="text-gray-400">{user.job}</p>
                 </div>
             </div>
 
@@ -50,15 +49,15 @@ function ProfileCard() {
             </div>
             <div className="mt-6 flex justify-between text-center">
                 <div>
-                    <p className="text-lg font-semibold">1.2m</p>
+                    <p className="text-lg font-semibold">{user.followers}</p>
                     <p className="text-gray-400">Followers</p>
                 </div>
                 <div>
-                    <p className="text-lg font-semibold">5</p>
+                    <p className="text-lg font-semibold">{user.posts}</p>
                     <p className="text-gray-400">Posts</p>
                 </div>
                 <div>
-                    <p className="text-lg font-semibold">2.3m</p>
+                    <p className="text-lg font-semibold">{user.likes}</p>
                     <p className="text-gray-400">Likes</p>
                 </div>
             </div>
