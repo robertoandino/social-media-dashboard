@@ -15,7 +15,11 @@ function ProfileCard() {
     const handleImageClick = (image) => {
         setSelectedImage(image)
     }
-  
+
+    const closeModal = () => {
+        setSelectedImage(null);
+    }
+
     return (
         <div className="bg-gray-700 text-white p-6 rounded-lg shadow-lg max-w-sm">
             <div className="flex items-center space-x-4">
@@ -57,6 +61,7 @@ function ProfileCard() {
                         key={index}
                         src={img}
                         alt={`pix-${index}`}
+                        onClick={() => handleImageClick(img)}
                         className="w-24 h-24 rounded-lg cursor-pointer
                              transform transition-transform duration-300 hover:scale-110"
                     />
@@ -68,13 +73,48 @@ function ProfileCard() {
                         key={index}
                         src={img}
                         alt={`pic-${index + 3}`}
+                        onClick={() => handleImageClick(img)}
                         className="w-24 h-24 rounded-lg cursor-pointer
                                 transform transition-transform duration-300 hover:scale-110"
                     />
                 ))}
             </div>
+
+            {selectedImage && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center 
+                            bg-black bg-opacity-70 backdrop-blur-sm"
+                    onClick={closeModal}
+                >
+                    <img
+                        src={selectedImage}
+                        alt="Expanded"
+                        className="max-w-full max-h-full p-4 transform scale-90 transition-transform
+                                duration-500 ease-in-out"
+                        style={{
+                            animation: "scale-up 0.5s ease-in-out",
+                        }}
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                </div>
+            )}
+
+            <style>
+                {`
+                    @keyframes scale-up {
+                        0% {
+                            transform: scale(0.5);
+                            opacity: 0;
+                        }
+                        100% {
+                            transform: scale(1);
+                            opacity: 1;
+                        }
+                    }
+                `}
+            </style>
         </div>
-        
+
     );
 }
 
