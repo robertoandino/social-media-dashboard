@@ -4,14 +4,13 @@ import bird from '../profilePics/bird.jpg'
 import goat from '../profilePics/goat.jpg'
 import horse from '../profilePics/horse.jpg'
 import dog from '../profilePics/frenchDog.jpg'
-import plane from '../profilePics/plane.jpg'
 
 function ProfileCard() {
 
     const [selectedImage, setSelectedImage] = useState(null);
     const [isAnimating, setIsAnimating] = useState(false);
 
-    const images = [bird, goat, horse, dog, plane];
+    const images = [bird, goat, horse, dog];
 
     const handleImageClick = (image) => {
         setSelectedImage(image)
