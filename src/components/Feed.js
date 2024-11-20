@@ -4,7 +4,8 @@ function Feed({ posts, onUserClick }) {
     return (
         <div className="mt-4 p-4 bg-gray-700 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4">Net</h2>
-            <div className="space-y-4 max-h-96 overflow-y-auto">
+            <div className="space-y-8 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600
+                        scrollbar-track-gray-700">
                 {posts.map(post => (
                     /*User's Icon*/
                     <div
