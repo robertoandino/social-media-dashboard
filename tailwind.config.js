@@ -3,16 +3,16 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
-        popUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0'},
-          '100%': { transform: 'translateY(0)', opacity: '1'},
+        glow: {
+          '0%, 100%': { opacity: '0.6', transform: 'scale(1)'},
+          '50%': { opacity: '1', transform: 'scale(1.2)'},
         },
       },
       animation: {
-        popUp: 'popUp 0.6s ease-out',
-      }
+        pulse: 'glow 1.5s infinite ease-in-out',
+      },
     },
   },
   plugins: [require('tailwind-scrollbar')],
-}
+};
 
