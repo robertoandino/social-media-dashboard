@@ -39,7 +39,7 @@ function Navbar() {
             {activeBot && (
                 <div
                     className="absolute top-24 left-1/2 transform -translate-x-1/2
-                            flex items-center space-x-4"
+                                flex flex-col items-center space-y-4"
                 >
                     {/**Circle*/}
                     <div 
@@ -62,8 +62,8 @@ function Navbar() {
                             }`,
                         }}
                     ></div>
-                    
-                    {/**Textbox*/}
+
+                    {/**AI Desc*/}
                     <div
                         className={`p-4 rounded-lg shadow-lg transition-transform
                             ${
@@ -88,6 +88,34 @@ function Navbar() {
                                 : "Hey there! I'm Yellow, let's get creative together."
                             }
                         </p>
+                    </div>
+
+                    {/**User Input*/}
+                    <input
+                        type="text"
+                        placeholder="Ask me anything..."
+                        className={`w-64 p-4 rounded-lg shadow-lg outline-none text-sm transition-transform
+                            ${
+                                activeBot === 'red'
+                                    ? 'bg-gradient-to-r from-yellow-500 via-red-500 to-orange-500 text-white'
+                                    : activeBot === 'purple'
+                                    ? 'bg-gradient-to-r from-purple-400 via-indigo-500 to-blue-500 text-white'
+                                    : 'bg-gradient-to-r form-yellow-300 via-yellow-500 to-green-500 text-black'
+                            } focus:ring-2 focus:ring-offset-2 focus:ring-white`}
+                    />
+                    
+                    {/**AI Response*/}
+                    <div
+                        className={`w-64 p-3 rounded-lg shadow-lg transition-transform
+                            ${
+                                activeBot === 'red'
+                                    ? 'bg-gradient-to-r from-yellow-500 via-red-500 to-orange-500 text-white'
+                                    : activeBot === 'purple'
+                                    ? 'bg-gradient-to-r from-purple-400 via-indigo-500 to-blue-500 text-white'
+                                    : 'bg-gradient-to-r from-yellow-300 via-yellow-500 to-green-500 text-black'
+                            }`}
+                    >
+                        <p className="text-sm italic">AI Response here...</p>
                     </div>
                 </div>
             )}
