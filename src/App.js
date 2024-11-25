@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Feed from './components/Feed';
 import CreatePost from './components/CreatePost';
 import ProfileCard from './components/ProfileCard';
-import './App.css';
 import Avatar1 from './pics/adventurer-1731961900547.svg';
 import Avatar2 from './pics/adventurer-1731961906649.svg';
 import Avatar3 from './pics/adventurer-1731961910274.svg';
