@@ -16,7 +16,7 @@ const users = [
     job: "Software Engineer",
     avatar: Avatar1,
     bio: "Just another developer on the grind",
-    followers: "3200k",
+    followers: "320k",
     posts: 20,
     likes: "152k",
     content: "Just posted a new blog!",
