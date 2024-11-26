@@ -50,7 +50,7 @@ function Ai({ activeBot, setActiveBot }){
                                 ? 'bg-gradient-to-r from-yellow-500 via-red-500 to-orange-500 text-white'
                                 : activeBot === 'purple'
                                 ? 'bg-gradient-to-r from-purple-400 via-indigo-500 to-blue-500 text-white'
-                                : 'bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-500 to-green-500 text-black'
+                                : 'bg-gradient-to-r from-yellow-300 via-yellow-500 to-green-500 text-black'
                         }    
                     `}
                 >
