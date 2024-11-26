@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const HUGGING_FACE_API_URL = 'https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill';
+const HUGGING_FACE_API_URL = 'https://api-inference.huggingface.co/models/facebook/blenderbot-1B-distill';
 const HUGGING_FACE_API_KEY = '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'
 
 app.post('/api/bot', async (req, res) => {

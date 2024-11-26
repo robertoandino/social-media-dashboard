@@ -1,8 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Draggable from 'react-draggable';
 
 function Ai({ activeBot, setActiveBot }){
-    
+
+    const [userInput, setUserInput] = useState('');
+    const [botResponse, setBotResponse] = useState('');
+
+    const handleUserInput = async () => {
+        try {
+            const res = await axios.post('http://localhost:5000/api/bot', {
+                message: userInput,
+            });
+            setBotResponse(res.data[0].generated_text || 'No response.');
+            console.log(res.data[0].generated_text)   
+            console.log(res.data)   
+        } catch (err) {
+            console.error('Error fetching response: ', err);
+            setBotResponse('Error communicating with AI.');
+        }
+    };
+
+    useEffect(() => {
+        console.log(botResponse)
+    }, [botResponse]);
+
     return(
         <Draggable>
             <div
@@ -72,6 +94,8 @@ function Ai({ activeBot, setActiveBot }){
                 <input
                     type="text"
                     placeholder="Ask me anything..."
+                    value={userInput}
+                    onChange={(e) => setUserInput(e.target.value)}
                     className={`w-64 p-4 rounded-lg shadow-lg outline-none text-sm transition-transform
                         ${
                             activeBot === 'red'
@@ -81,7 +105,13 @@ function Ai({ activeBot, setActiveBot }){
                                 : 'bg-gradient-to-r from-yellow-300 via-yellow-500 to-green-500 text-black'
                         } focus:ring-2 focus:ring-offset-2 focus:ring-white`}
                 />
-                
+                <button 
+                    onClick={handleUserInput} 
+                    className="bg-gradient-to-r from-purple-700 via-yellow-500 to-red-500 text-white p-2 rounded"
+                >
+                    Send
+                </button>
+
                 {/**AI Response*/}
                 <div
                     className={`w-64 p-3 rounded-lg shadow-lg transition-transform
@@ -93,7 +123,9 @@ function Ai({ activeBot, setActiveBot }){
                                 : 'bg-gradient-to-r from-yellow-300 via-yellow-500 to-green-500 text-black'
                         }`}
                 >
-                    <p className="text-sm italic">AI Response here...</p>
+                    <p className="text-sm italic">
+                        {botResponse.length > 0 ? botResponse : `Waiting for AI Response...`}
+                    </p>
                 </div>
             </div>
         </Draggable>
