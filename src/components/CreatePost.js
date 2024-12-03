@@ -1,6 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function CreatePost(){
+function CreatePost({ user, setPosts }){
+
+    const [postContent, setPostContent] = useState("");
+
+    const handlePostsSubmit = () => {
+
+        if (postContent.trim() !== "") {
+
+            const newPost = {
+                id: Date.now(),
+                user: user.name,
+                avatar: user.avatar,
+                color: user.color,
+                content: postContent,
+                timestamp: new Date().toLocaleTimeString(),
+                likes: 0,
+                comments: 0,
+            };
+            setPosts((prevPosts) => [newPost, ...prevPosts]);
+            setPostContent("");
+        } else {
+            alert("Post cannot be empty!")
+        }
+
+    }
+
     return(
         <div className="mt-4 p-4 bg-gray-700 rounded-lg shadow-lg">
             <h2 className="text-xl font-semibold mb-4">Thoughts</h2>
