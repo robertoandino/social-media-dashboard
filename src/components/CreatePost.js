@@ -6,11 +6,16 @@ function CreatePost({ user, setPosts }){
 
     const handlePostSubmit = () => {
 
+        if(!user) {
+            alert("User is not defined!");
+            return;
+        }
+
         if (postContent.trim() !== "") {
 
             const newPost = {
-                id: Date.now(),
-                user: user.name,
+                id: Date.now(), //Creates unique ID
+                user: user.user,
                 avatar: user.avatar,
                 color: user.color,
                 content: postContent,
