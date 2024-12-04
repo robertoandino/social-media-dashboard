@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Feed({ posts, onUserClick }) {
+
     return (
         <div className="mt-4 p-4 bg-gray-700 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4">Net</h2>

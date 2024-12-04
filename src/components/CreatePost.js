@@ -4,7 +4,7 @@ function CreatePost({ user, setPosts }){
 
     const [postContent, setPostContent] = useState("");
 
-    const handlePostsSubmit = () => {
+    const handlePostSubmit = () => {
 
         if (postContent.trim() !== "") {
 
@@ -34,9 +34,22 @@ function CreatePost({ user, setPosts }){
                 <input
                     type="text"
                     placeholder="What's on your mind?"
+                    value={postContent}
+                    onChange={(e) => setPostContent(e.target.value)}
                     className="w-full p-3 bg-gray-800 text-gray-300 rounded-lg
                             outline-none focus:ring-2 focus:rind-blue-500"
                 />
+            </div>
+
+            {/**Post Button*/}
+            <div className="flex justify-end mt-4">
+                <button
+                    onClick={handlePostSubmit}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-lg
+                            hover:bg-blue-500 transition"
+                >
+                    Post
+                </button>
             </div>
 
             {/*Emojis*/}
