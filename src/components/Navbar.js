@@ -39,7 +39,12 @@ function Navbar() {
             {/**Right Info*/}
             <div className="flex items-center space-x-4">
                 <span className="text-white">John Doe</span>
-                <button className="bg-blue-500 text-white p-2 rounded">Logout</button>
+                <button  className="bg-gray-900 text-gray-300 font-semibold px-4 py-2 rounded-lg
+                            hover:bg-red-600 hover:scale-105 transition-all duration-200 
+                            ease-in-out focus:ring focus:ring-gray-600"
+                >
+                    Logout
+                </button>
             </div>
 
             {/**Ai*/}

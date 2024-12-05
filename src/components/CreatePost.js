@@ -51,10 +51,10 @@ function CreatePost({ user, setPosts }){
                 <button
                     onClick={handlePostSubmit}
                     className="bg-gray-800 text-gray-300 font-semibold px-4 py-2 rounded-lg
-                            hover:bg-gray-900 hover:scale-105 transition-all duration-200 
+                            hover:bg-yellow-600 hover:scale-105 transition-all duration-200 
                             ease-in-out focus:ring focus:ring-gray-600"
                 >
-                    Share
+                    Upload
                 </button>
             </div>
 
