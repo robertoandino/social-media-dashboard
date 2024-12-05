@@ -50,14 +50,16 @@ function CreatePost({ user, setPosts }){
             <div className="flex justify-end mt-4">
                 <button
                     onClick={handlePostSubmit}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-lg
-                            hover:bg-blue-500 transition"
+                    className="bg-gray-800 text-gray-300 font-semibold px-4 py-2 rounded-lg
+                            hover:bg-gray-900 hover:scale-105 transition-all duration-200 
+                            ease-in-out focus:ring focus:ring-gray-600"
                 >
-                    Post
+                    Share
                 </button>
             </div>
 
-            {/*Emojis*/}
+
+            {/*Emojis
             <div className="flex space-x-4 justify-center">
                 <button
                     className="flex flex-col items-center p-4 rounded-lg
@@ -88,6 +90,8 @@ function CreatePost({ user, setPosts }){
                     <span className="text-3xl">🎥</span>
                 </button>
             </div>
+            */}
+    
         </div>
     );
 }
