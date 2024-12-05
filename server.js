@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const bodyParser = require('body-parser');
@@ -8,7 +9,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const HUGGING_FACE_API_URL = 'https://api-inference.huggingface.co/models/facebook/blenderbot-1B-distill';
-const HUGGING_FACE_API_KEY = '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'
+const HUGGING_FACE_API_KEY = process.env.HUGGING_FACE_API_KEY
 
 app.post('/api/bot', async (req, res) => {
     
