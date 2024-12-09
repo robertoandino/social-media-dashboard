@@ -3,16 +3,21 @@ import React from 'react';
 function Feed({ posts, onUserClick, animatedPost }) {
 
     return (
-        <div className="mt-4 p-4 bg-gray-700 rounded-lg shadow-lg">
+        <div className="mt-4 p-4 bg-gray-700 rounded-lg shadow-lg relative">
             <h2 className="text-xl font-bold mb-4">Net</h2>
 
             {/**Animated Post*/}
             {animatedPost && (
                 <div
-                    className={`absolute left-1/2 transform -translate-x-1/2 bg-gray-300 p-4 rounded-lg
-                        shadow animate-jumpToFeed z-10`}
+                    className={`absolute left-1/2 transform -translate-x-1/2 bg-gray-800 p-4 rounded-lg
+                        shadow-lg animate-jump-to-feed z-10`}
+                    style={{
+                        top: "-100px", 
+                        width: "calc(100% - 2rem)",
+                    }}
                 >
                     <div className="flex items-start space-x-4">
+                        {/**Avatar*/}
                         <div className={`p-0.5 rounded-full bg-gradient-to-r
                             ${animatedPost.color === "red"
                                 ? "from-yellow-500 via-orange-500 to-red-500"
@@ -28,9 +33,28 @@ function Feed({ posts, onUserClick, animatedPost }) {
                                 />
                             </div>    
                         </div>
+
+                        {/**Post Content*/}
                         <div className="flex-1">
-                            <h3 className="text-sm font-bold text-white">{animatedPost.user}</h3>
-                            <p className="text-gray-400 mt-2">{animatedPost.content}</p>
+                            <div className="flex justify-between items-center">
+                                <h3 className="text-sm font-bold text-white">{animatedPost.user}</h3>
+                                <p className="text-gray-400 mt-2">{animatedPost.content}</p>
+                            </div>
+                            <p className="text-gray-300 mt-2">{animatedPost.content}</p>
+                            <div className="flex space-x-4 mt-4">
+                                <buttom className="text-sm text-blue-400 hover:underline flex
+                                                items-center space-x-1"
+                                >
+                                    <span>👍</span>    
+                                    <span>{animatedPost.likes} likes</span>
+                                </buttom>
+                                <button className="text-sm text-blue-400 hover:underline flex
+                                                items-center space-x-1"
+                                >
+                                    <span>💬</span>
+                                    <span>{animatedPost.comments} Comments</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
