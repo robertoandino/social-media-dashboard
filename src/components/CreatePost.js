@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function CreatePost({ user, setPosts }){
+function CreatePost({ user, onAnimatePost }){
 
     const [postContent, setPostContent] = useState("");
 
@@ -23,7 +23,9 @@ function CreatePost({ user, setPosts }){
                 likes: 0,
                 comments: 0,
             };
-            setPosts((prevPosts) => [newPost, ...prevPosts]);
+
+            //setPosts((prevPosts) => [newPost, ...prevPosts]);
+            onAnimatePost(newPost);
             setPostContent("");
         } else {
             alert("Post cannot be empty!")

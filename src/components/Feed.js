@@ -1,10 +1,42 @@
 import React from 'react';
 
-function Feed({ posts, onUserClick }) {
+function Feed({ posts, onUserClick, animatedPost }) {
 
     return (
         <div className="mt-4 p-4 bg-gray-700 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4">Net</h2>
+
+            {/**Animated Post*/}
+            {animatedPost && (
+                <div
+                    className={`absolute left-1/2 transform -translate-x-1/2 bg-gray-300 p-4 rounded-lg
+                        shadow animate-jumpToFeed z-10`}
+                >
+                    <div className="flex items-start space-x-4">
+                        <div className={`p-0.5 rounded-full bg-gradient-to-r
+                            ${animatedPost.color === "red"
+                                ? "from-yellow-500 via-orange-500 to-red-500"
+                                : animatedoPost.color === "purple"
+                                ? "from-purple-500 via-indigo-500"
+                                : "from-yellow-500 via-black-500"}`}
+                        >
+                            <div className="border border-gray-700 rounded-full p-3 bg-gray-800">
+                                <img
+                                    src={animatedPost.avatart}
+                                    alt={`${animatedPost.user}'s avatar`}
+                                    className="w-10 h-10 rounded-full"
+                                />
+                            </div>    
+                        </div>
+                        <div className="flex-1">
+                            <h3 className="text-sm font-bold text-white">{animatedPost.user}</h3>
+                            <p className="text-gray-400 mt-2">{animatedPost.content}</p>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/**Posts*/}
             <div className="space-y-8 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600
                         scrollbar-track-gray-700">
                 {posts.map(post => (

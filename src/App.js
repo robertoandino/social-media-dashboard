@@ -60,6 +60,16 @@ function App() {
 
   const [posts, setPosts] = useState(users);
   const [selectedUser, setSelectedUser] = useState(users[2]);
+  const [animatedPost, setAnimatedPost] = useState(null);
+
+  const handlePostAnimation = (newPost) => {
+    
+    setAnimatedPost(newPost);
+    setTimeout(() => {
+      setPosts((prevPosts) => [newPost, ...prevPosts]);
+      setAnimatedPost(null);
+    }, 1000);
+  };
 
   return (
     <DashboardLayout>
@@ -67,8 +77,8 @@ function App() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         <ProfileCard user={selectedUser}/>
         <div className="lg:col-span-2 space-y-6">
-          <CreatePost user={selectedUser} setPosts={setPosts}/>
-          <Feed posts={posts} onUserClick={setSelectedUser}/>
+          <CreatePost user={selectedUser} onAnimatePost={handlePostAnimation} />
+          <Feed posts={posts} onUserClick={setSelectedUser} animatedPost={animatedPost} />
         </div>
       </div>
     </DashboardLayout>
