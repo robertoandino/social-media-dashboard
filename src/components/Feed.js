@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Feed({ posts, onUserClick, animatedPost }) {
 
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const handleClick = () => {
+        setIsExpanded(!isExpanded);
+    }
+
     return (
-        <div className="mt-4 p-4 bg-gray-700 rounded-lg shadow-lg relative">
+        <div 
+            className={`mt-6 p-6 bg-gray-700 rounded-lg shadow-lg relative transition-all duration-500 ease-in-out
+                ${ isExpanded
+                    ? 'absolute inset-0 z-50 max-w-4xl max-h-4xl mx-auto transform scale-110'
+                    : 'w-full' 
+                }`}
+                onClick={handleClick}
+        >
             <h2 className="text-xl font-bold mb-4">Net</h2>
 
             {/**Animated Post*/}
