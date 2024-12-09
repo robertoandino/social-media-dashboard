@@ -28,7 +28,9 @@ function ProfileCard({ user }) {
                 <div className={`p-0.5 rounded-full bg-gradient-to-r 
                                 ${user.color === "red" ? "from-yellow-500 via-orange-500 to-red-500" : 
                                 user.color === "purple" ?  "from-purple-500 via-indigo-400 to-indigo-400" :
-                                "from-yellow-500 via-yellow-400 to-green-300"}`}>
+                                "from-yellow-500 via-yellow-400 to-green-300"}`
+                                }
+                >
                     <div className="border-2 border-gray-700 rounded-full p-3 bg-gray-700">
                         <img
                             src={user.avatar}
