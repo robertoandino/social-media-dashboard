@@ -50,9 +50,9 @@ function CreatePost({ user, setPosts }){
             <div className="flex justify-end mt-4">
                 <button
                     onClick={handlePostSubmit}
-                    className="bg-gray-800 text-gray-300 font-semibold px-4 py-2 rounded-lg
-                            hover:bg-yellow-600 hover:scale-105 transition-all duration-200 
-                            ease-in-out focus:ring focus:ring-gray-600"
+                    className="bg-gray-800 text-gray-300 font-semibold px-4 py-2 rounded-lg 
+                            hover:bg-gradient-to-r hover:from-yellow-500 hover:via-red-500 hover:to-red-700
+                            hover:scale-105 transition-all duration-200 ease-in-out focus:ring focus:ring-red-600"
                 >
                     Upload
                 </button>
