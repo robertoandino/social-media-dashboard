@@ -63,7 +63,6 @@ function App() {
   const [animatedPost, setAnimatedPost] = useState(null);
 
   const handlePostAnimation = (newPost) => {
-    
     setAnimatedPost(newPost);
     setTimeout(() => {
       setPosts((prevPosts) => [newPost, ...prevPosts]);

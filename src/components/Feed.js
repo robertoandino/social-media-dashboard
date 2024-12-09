@@ -21,13 +21,13 @@ function Feed({ posts, onUserClick, animatedPost }) {
                         <div className={`p-0.5 rounded-full bg-gradient-to-r
                             ${animatedPost.color === "red"
                                 ? "from-yellow-500 via-orange-500 to-red-500"
-                                : animatedoPost.color === "purple"
+                                : animatedPost.color === "purple"
                                 ? "from-purple-500 via-indigo-500"
                                 : "from-yellow-500 via-black-500"}`}
                         >
                             <div className="border border-gray-700 rounded-full p-3 bg-gray-800">
                                 <img
-                                    src={animatedPost.avatart}
+                                    src={animatedPost.avatar}
                                     alt={`${animatedPost.user}'s avatar`}
                                     className="w-10 h-10 rounded-full"
                                 />
