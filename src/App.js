@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Feed from './components/Feed';
 import CreatePost from './components/CreatePost';
 import ProfileCard from './components/ProfileCard';
+import AIPanel from './components/AIPanel';
 import Avatar1 from './pics/adventurer-1731961900547.svg';
 import Avatar2 from './pics/adventurer-1731961906649.svg';
 import Avatar3 from './pics/adventurer-1731961910274.svg';
@@ -74,7 +75,13 @@ function App() {
     <DashboardLayout>
       <Navbar />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <ProfileCard user={selectedUser}/>
+        {/**Left Column*/}
+        <div className="space-y-6">
+          <ProfileCard user={selectedUser}/>
+          <AIPanel/>
+        </div>
+
+        {/**Right Column*/}
         <div className="lg:col-span-2 space-y-6">
           <CreatePost user={selectedUser} onAnimatePost={handlePostAnimation} />
           <Feed posts={posts} onUserClick={setSelectedUser} animatedPost={animatedPost} />
