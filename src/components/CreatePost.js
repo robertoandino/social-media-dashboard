@@ -34,7 +34,7 @@ function CreatePost({ user, onAnimatePost }){
     }
 
     return(
-        <div className="mt-4 p-4 bg-gray-700 rounded-lg shadow-lg">
+        <div className="mt-1 p-4 bg-gray-700 rounded-lg shadow-lg">
             <h2 className="text-xl font-semibold mb-4">Thoughts</h2>
             <div className="space-x-4">
                 {/*Input*/}
