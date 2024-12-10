@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Feed({ posts, onUserClick, animatedPost }) {
 
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [divHeight, setDivHeight] = useState("400px");
 
-    const handleClick = () => {
-        setIsExpanded(!isExpanded);
-    }
+    useEffect(() => {
+        const baseHeight = 400; //Initial Main Div Height
+        const additionalHeight = posts.length * 50; //Each new posts add 50px
+        const maxAllowedHeight = 800; //Optional maximum height
+        const newHeight = Math.min(baseHeight + additionalHeight, maxAllowedHeight);
+        setDivHeight(`${newHeight}px`);
+    }, [posts]);
 
     return (
         <div 
-            className={`mt-6 p-6 bg-gray-700 rounded-lg shadow-lg relative transition-all duration-500 ease-in-out
-                ${ isExpanded
-                    ? 'absolute inset-0 z-50 max-w-4xl max-h-4xl mx-auto transform scale-110'
-                    : 'w-full' 
-                }`}
-                onClick={handleClick}
+            className="p-6 bg-gray-700 rounded-lg shadow-lg transition-all duration-500 ease-in-out"
+            style={{ divHeight }}
         >
             <h2 className="text-xl font-bold mb-4">Net</h2>
 
@@ -73,11 +73,10 @@ function Feed({ posts, onUserClick, animatedPost }) {
                 </div>
             )}
 
-            {/**Posts*/}
-            <div className="space-y-8 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600
-                        scrollbar-track-gray-700">
+            {/**Posts Lists*/}
+            <div className="space-y-8">
                 {posts.map(post => (
-                    /*User's Icon*/
+                    /*Avatar*/
                     <div
                         key={post.id}
                         className="p-4 bg-gray-800 rounded-lg shadow-mg flex items-start space-x-4 cursor-pointer"
@@ -95,7 +94,7 @@ function Feed({ posts, onUserClick, animatedPost }) {
                                 />
                             </div>
                         </div>
-                        {/*User's Post*/}
+                        {/*Posts Content*/}
                         <div className="flex-1">
                             <div className="flex justify-between items-center">
                                 <h3 className="text-sm font-bold text-white">{post.user}</h3>
