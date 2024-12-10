@@ -22,7 +22,10 @@ function ProfileCard({ user }) {
     }
 
     return (
-        <div className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg max-w-sm">
+        <div 
+            className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg max-w-sm"
+            style={{ height: "550px" }} //Setting fixed height for profile card.    
+        >
             {/* Profile */}
             <div className="flex items-center space-x-4">
                 <div className={`p-0.5 rounded-full bg-gradient-to-r 
