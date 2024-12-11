@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 function Feed({ posts, onUserClick, animatedPost }) {
 
-    const [divHeight, setDivHeight] = useState("400px");
+    const thoughtsRef = useRef(null);
+    const [thoughtsPosition, setThoughtsPosition] = useState(0);
 
     useEffect(() => {
-        const baseHeight = 400; //Initial Main Div Height
-        const additionalHeight = posts.length * 50; //Each new posts add 50px
-        const maxAllowedHeight = 800; //Optional maximum height
-        const newHeight = Math.min(baseHeight + additionalHeight, maxAllowedHeight);
-        setDivHeight(`${newHeight}px`);
-    }, [posts]);
+        if(thoughtsRef.current) {
+            const rect = thoughtsRef.current.getBoundingClientRect();
+            setThoughtsPosition(rect.bottom);
+        }
+    }, [animatedPost]);
 
     return (
         <div 
-            className="p-6 bg-gray-700 rounded-lg shadow-lg transition-all duration-500 ease-in-out"
-            style={{ divHeight }}
+            className="relative p-6 bg-gray-700 rounded-lg shadow-lg transition-all duration-500 ease-in-out"
         >
             <h2 className="text-xl font-bold mb-4">Net</h2>
 
@@ -25,7 +24,9 @@ function Feed({ posts, onUserClick, animatedPost }) {
                     className={`absolute left-1/2 transform -translate-x-1/2 bg-gray-800 p-4 rounded-lg
                         shadow-lg animate-jump-to-feed z-10`}
                     style={{
-                        top: "-100px", 
+                        top: `${thoughtsPosition + -50}px`, //Vertical position
+                        left: "-1%", //shift slightly to the left
+                        transform: "translate(45%, 0)", //Adjust translaiton to align.
                         width: "calc(100% - 2rem)",
                     }}
                 >
