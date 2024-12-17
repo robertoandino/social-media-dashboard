@@ -31,7 +31,7 @@ function AIPanel(){
                         <div key={index} className="flex items-center space-x-4">
 
                             <span className={
-                                `p-2 rounded-full bg-gradient-to-r
+                                `p-2 rounded-full animate-pulse bg-gradient-to-r
                                 ${bot === 'Red' ? 'from-yellow-500 via-orange-500 to-red-500' :
                                   bot === 'Purple' ? 'from-purple-500 via-indigo-400 to-indigo-400' : 
                                   'from-yellow-500 via-yellow-400 to-green-300'
