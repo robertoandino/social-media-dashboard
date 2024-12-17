@@ -23,7 +23,11 @@ const users = [
     timestamp: "2 hours ago",
     comments: 2,
     color: "yellow",
-    images: []
+    images: [],
+    commentsList: [
+      { user: "John", text: "Nice post!"},
+      { user: "Mary", text: "Totally agree!"},
+    ],
   },
   {
     id: 2,
@@ -38,7 +42,11 @@ const users = [
     content: "Check out my latest travel photos.",
     timestamp: "5 hours ago",
     comments: 4,
-    color: "purple"
+    color: "purple",
+    commentsList: [
+      { user: "John", text: "Nice post!"},
+      { user: "Mary", text: "Totally agree!"},
+    ],
   },
   {
     id: 3,
@@ -53,7 +61,11 @@ const users = [
     content: "HahahhhsHSAS.",
     timestamp: "7 hours ago",
     comments: 323,
-    color: "red"
+    color: "red",
+    commentsList: [
+      { user: "John", text: "Nice post!"},
+      { user: "Mary", text: "Totally agree!"},
+    ],
   }
 ];
 

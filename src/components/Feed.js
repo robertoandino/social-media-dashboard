@@ -4,7 +4,9 @@ function Feed({ posts, onUserClick, animatedPost }) {
 
     const thoughtsRef = useRef(null);
     const [thoughtsPosition, setThoughtsPosition] = useState(0);
+    const [openComments, setOpenComments] = useState({}); 
 
+    //Animated Post
     useEffect(() => {
         if(thoughtsRef.current) {
             const rect = thoughtsRef.current.getBoundingClientRect();
@@ -12,10 +14,16 @@ function Feed({ posts, onUserClick, animatedPost }) {
         }
     }, [animatedPost]);
 
+    //Toggle comments
+    const toggleComments = (postId) => {
+        setOpenComments((prev) => ({
+            ...prev,
+            [postId]: !prev[postId],
+        }));
+    };
+
     return (
-        <div 
-            className="relative p-6 bg-gray-700 rounded-lg shadow-lg transition-all duration-500 ease-in-out"
-        >
+        <div className="relative p-6 bg-gray-700 rounded-lg shadow-lg transition-all duration-500 ease-in-out">
             <h2 className="text-xl font-bold mb-4">Net</h2>
 
             {/**Animated Post*/}
@@ -102,7 +110,8 @@ function Feed({ posts, onUserClick, animatedPost }) {
                                 <span className="text-xs text-gray-400">{post.timestamp}</span>
                             </div>
                             <p className="text-gray-4300 mt-2">{post.content}</p>
-
+                            
+                            {/**Buttons*/}
                             <div className="flex space-x-4 mt-4">
                                 <button
                                     className="text-sm text-blue-400 hover:underline flex items-center space-x-1"
@@ -112,11 +121,32 @@ function Feed({ posts, onUserClick, animatedPost }) {
                                 </button>
                                 <button
                                     className="text-sm text-blue-400 hover:underline flex items-center space-x-1"
+                                    onClick={(e) => {
+                                        e.stopPropagation(); //Prevents post click
+                                        toggleComments(post.id);
+                                    }}
                                 >
                                     <span>💬</span>
                                     <span>{post.comments} Comments</span>
                                 </button>
                             </div>
+
+                            {/**Comments Section*/}
+                            {openComments[post.id] && (
+                                <div className="mt-4 p-4 bg-gray-900 rounded-lg shadow-inner">
+                                    <h4 className="text-sm font-semibold text-gray-200 mb-2">Comments:</h4>
+                                    {post.commentsList && post.commentsList.length > 0 ? (
+                                        post.commentsList.map((comment, index) => (
+                                            <div key={index} className="text-gray-400 text-sm mb-2">
+                                                <span className="font-bold">{comment.user}: </span>
+                                                {comment.text}
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p className="text-gray-500 text-sm">No comments yet.</p>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     </div>
                 ))}
