@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-function Feed({ posts, onUserClick, animatedPost }) {
+function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts }) {
 
     const thoughtsRef = useRef(null);
     const [thoughtsPosition, setThoughtsPosition] = useState(0);
@@ -49,8 +49,13 @@ function Feed({ posts, onUserClick, animatedPost }) {
                 : post
         );
 
-        //Update state
-        onUserClick(updatedPosts);
+        console.log("Updated Posts:", updatedPosts)
+
+        //Update parent state
+        if(typeof onUpdatedPosts === "function"){
+            console.log("onUpdatedPosts is being called.");
+            onUpdatedPosts(updatedPosts);
+        }
 
         //Clear form
         setCommentsInput((prev) => ({
@@ -184,10 +189,28 @@ function Feed({ posts, onUserClick, animatedPost }) {
                                     )}
 
                                     {/**Add new comment form*/}
-                                    <div>
-                                        
+                                    <div className="mt-4">
+                                        <input
+                                            type="text"
+                                            className="w-full p-2 rounded-lg bg-gray-800 text-gray-300 border 
+                                                    border-gray-600 focus:outline-none focus:ring focus:ring-blue-400"
+                                            placeholder="Write a comment..."
+                                            value={commentsInput[post.id] || ""}
+                                            onChange={(e) => 
+                                                commentChange(post.id, e.target.value)
+                                            }
+                                        />
+                                        <button
+                                            className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                                            onClick={(e) => {
+                                                e.stopPropagation(); 
+                                                addComment(post.id);
+                                                console.log(post.commentsList)
+                                            }}
+                                        >
+                                            Post Comment
+                                        </button>
                                     </div>
-
                                 </div>
                             )}
                         </div>
