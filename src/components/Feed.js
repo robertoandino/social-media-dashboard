@@ -5,6 +5,7 @@ function Feed({ posts, onUserClick, animatedPost }) {
     const thoughtsRef = useRef(null);
     const [thoughtsPosition, setThoughtsPosition] = useState(0);
     const [openComments, setOpenComments] = useState({}); 
+    const [commentsInput, setCommentsInput] = useState({});
 
     //Animated Post
     useEffect(() => {
@@ -19,6 +20,42 @@ function Feed({ posts, onUserClick, animatedPost }) {
         setOpenComments((prev) => ({
             ...prev,
             [postId]: !prev[postId],
+        }));
+    };
+
+    //Handles comments updates
+    const commentChange = (postId, value) => {
+        setCommentsInput((prev) => ({
+            ...prev,
+            [postId]: value,
+        }));
+    };
+
+    //Handles adding new comment
+    const addComment = (postId) => {
+        const newComment = commentsInput[postId];
+        if(!newComment) return;
+
+        const updatedPosts = posts.map((post) => 
+            post.id === postId
+                ? {
+                    ...post,
+                    commentsList: [
+                        ...(post.commentsList || []),
+                        { user: "Current User", text: newComment },
+                    ],
+                    comments: (post.comments || 0) + 1, //Increment comments count
+                }
+                : post
+        );
+
+        //Update state
+        onUserClick(updatedPosts);
+
+        //Clear form
+        setCommentsInput((prev) => ({
+            ...prev,
+            [postId]: "",
         }));
     };
 
@@ -145,6 +182,12 @@ function Feed({ posts, onUserClick, animatedPost }) {
                                     ) : (
                                         <p className="text-gray-500 text-sm">No comments yet.</p>
                                     )}
+
+                                    {/**Add new comment form*/}
+                                    <div>
+                                        
+                                    </div>
+
                                 </div>
                             )}
                         </div>
