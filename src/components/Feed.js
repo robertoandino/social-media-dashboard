@@ -133,7 +133,7 @@ function Feed({ posts, onUserClick, animatedPost }) {
 
                             {/**Comments Section*/}
                             {openComments[post.id] && (
-                                <div className="mt-4 p-4 bg-gray-900 rounded-lg shadow-inner">
+                                <div className="mt-4 p-4 bg-gray-700 rounded-lg shadow-inner">
                                     <h4 className="text-sm font-semibold text-gray-200 mb-2">Comments:</h4>
                                     {post.commentsList && post.commentsList.length > 0 ? (
                                         post.commentsList.map((comment, index) => (
