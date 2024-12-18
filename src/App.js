@@ -21,7 +21,6 @@ const users = [
     likes: "152k",
     content: "Just posted a new blog!",
     timestamp: "2 hours ago",
-    comments: 2,
     color: "yellow",
     images: [],
     commentsList: [
@@ -41,7 +40,6 @@ const users = [
     images: [],
     content: "Check out my latest travel photos.",
     timestamp: "5 hours ago",
-    comments: 4,
     color: "purple",
     commentsList: [
       { user: "John", text: "Nice post!"},
@@ -60,7 +58,6 @@ const users = [
     images: [],
     content: "HahahhhsHSAS.",
     timestamp: "7 hours ago",
-    comments: 323,
     color: "red",
     commentsList: [
       { user: "John", text: "Nice post!"},

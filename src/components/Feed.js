@@ -127,7 +127,7 @@ function Feed({ posts, onUserClick, animatedPost }) {
                                     }}
                                 >
                                     <span>💬</span>
-                                    <span>{post.comments} Comments</span>
+                                    <span>{post.commentsList.length} Comments</span>
                                 </button>
                             </div>
 
