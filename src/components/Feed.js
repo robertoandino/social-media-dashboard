@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts }) {
+function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }) {
 
     const thoughtsRef = useRef(null);
     const [thoughtsPosition, setThoughtsPosition] = useState(0);
@@ -49,7 +49,7 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts }) {
                 : post
         );
 
-        console.log("Updated Posts:", updatedPosts)
+        //console.log("Updated Posts:", updatedPosts)
 
         //Update parent state
         if(typeof onUpdatedPosts === "function"){
@@ -106,12 +106,12 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts }) {
                             </div>
                             <p className="text-gray-300 mt-2">{animatedPost.content}</p>
                             <div className="flex space-x-4 mt-4">
-                                <buttom className="text-sm text-blue-400 hover:underline flex
+                                <button className="text-sm text-blue-400 hover:underline flex
                                                 items-center space-x-1"
                                 >
                                     <span>👍</span>    
                                     <span>{animatedPost.likes} likes</span>
-                                </buttom>
+                                </button>
                                 <button className="text-sm text-blue-400 hover:underline flex
                                                 items-center space-x-1"
                                 >
@@ -157,7 +157,11 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts }) {
                             <div className="flex space-x-4 mt-4">
                                 <button
                                     className="text-sm text-blue-400 hover:underline flex items-center space-x-1"
-                                >
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        likesCounter(post.id);
+                                    }}
+                                > 
                                     <span>👍</span>
                                     <span>{post.likes} Likes</span>
                                 </button>

@@ -18,7 +18,7 @@ const users = [
     bio: "Just another developer on the grind",
     followers: "320k",
     posts: 20,
-    likes: "152k",
+    likes: 50,
     content: "Just posted a new blog!",
     timestamp: "2 hours ago",
     color: "yellow",
@@ -36,7 +36,7 @@ const users = [
     bio: "Travel enthusiast sharing moments.",
     followers: "1000",
     posts: 45,
-    likes: "50k",
+    likes: 1,
     images: [],
     content: "Check out my latest travel photos.",
     timestamp: "5 hours ago",
@@ -54,7 +54,7 @@ const users = [
     bio: "Hhahahahahasaa.",
     followers: 10210,
     posts: 323,
-    likes: "230k",
+    likes: 2,
     images: [],
     content: "HahahhhsHSAS.",
     timestamp: "7 hours ago",
@@ -90,6 +90,16 @@ function App() {
     setPosts(updatedPosts);
   };
 
+  const likesCounter = (postId) => {   
+    setPosts((prevPosts) => 
+        prevPosts.map((post) => 
+            post.id === postId
+                ? { ...post, likes: (post.likes || 0 ) + 1}
+                : post
+        )
+    )
+}
+
   return (
     <DashboardLayout>
       <Navbar />
@@ -103,7 +113,7 @@ function App() {
         {/**Right Column*/}
         <div className="lg:col-span-2 space-y-6">
           <CreatePost user={selectedUser} onAnimatePost={handlePostAnimation} />
-          <Feed posts={posts} onUserClick={setSelectedUser} animatedPost={animatedPost} onUpdatedPosts={handleUpdatedPosts}/>
+          <Feed posts={posts} onUserClick={setSelectedUser} animatedPost={animatedPost} onUpdatedPosts={handleUpdatedPosts} likesCounter={likesCounter}/>
         </div>
       </div>
     </DashboardLayout>
