@@ -73,9 +73,15 @@ function App() {
   const [animatedPost, setAnimatedPost] = useState(null);
 
   const handlePostAnimation = (newPost) => {
-    setAnimatedPost(newPost);
+    setAnimatedPost({
+      ...newPost,
+      commentsList: newPost.commentsList || [], //Making sure commentsList is always initialized. 
+    });
     setTimeout(() => {
-      setPosts((prevPosts) => [newPost, ...prevPosts]);
+      setPosts((prevPosts) => [
+        { ...newPost, commentsList: newPost.commentsList || [] },
+        ...prevPosts,
+      ]);
       setAnimatedPost(null);
     }, 1000);
   };

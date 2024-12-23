@@ -169,7 +169,7 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts }) {
                                     }}
                                 >
                                     <span>💬</span>
-                                    <span>{post.commentsList.length} Comments</span>
+                                    <span>{post.commentsList?.length || 0} Comments</span>
                                 </button>
                             </div>
 
