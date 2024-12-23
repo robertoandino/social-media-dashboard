@@ -71,6 +71,7 @@ function App() {
   const [posts, setPosts] = useState(users);
   const [selectedUser, setSelectedUser] = useState(users[2]);
   const [animatedPost, setAnimatedPost] = useState(null);
+  const [likedPosts, setLikedPosts] = useState([]);
 
   const handlePostAnimation = (newPost) => {
     setAnimatedPost({
@@ -92,13 +93,24 @@ function App() {
 
   const likesCounter = (postId) => {   
     setPosts((prevPosts) => 
-        prevPosts.map((post) => 
-            post.id === postId
-                ? { ...post, likes: (post.likes || 0 ) + 1}
-                : post
-        )
+      prevPosts.map((post) => {
+        if(post.id === postId) {
+          const isLiked = likedPosts.includes(postId);
+          return {
+            ...post,
+            likes: isLiked ? post.likes - 1 : post.likes + 1,
+          }
+        }    
+        return post;
+      })
     )
-}
+
+    setLikedPosts((prevLikedPosts) => 
+      prevLikedPosts.includes(postId)
+        ? prevLikedPosts.filter((id) => id !== postId) //removes from liked posts
+        : [...prevLikedPosts, postId] //Add to liked posts
+    );
+};
 
   return (
     <DashboardLayout>
