@@ -69,9 +69,16 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
     const CommentList = memo(({ comments }) => (
         <>
             {comments.map((comment, index) => (
-                <div key={index} className="text-gray-400 text-sm mb-2">
-                    <span className="font-bold">{comment.user}: </span>
-                    {comment.text}
+                <div key={index} className="flex items-start space-x-3 mb-4">
+                    <img
+                        src={comment.avatar || 'default-avatar.png'} 
+                        alt={`${comment.user}'s avatar`}
+                        className="w-8 h-8 rounded-full"
+                    />
+                    <div className="flex-1 bg-gray-800 p-3 rounded-lg">
+                        <span className="block text-sm font-bold text-white">{comment.user}</span>
+                        <span className="block text-sm text-gray-400">{comment.text}</span>
+                    </div>
                 </div>
             ))}
         </>
