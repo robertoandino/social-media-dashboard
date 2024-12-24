@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import ActionButton from './ActionButton';
 
 function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }) {
 
@@ -155,26 +156,22 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
                             
                             {/**Buttons*/}
                             <div className="flex space-x-4 mt-4">
-                                <button
-                                    className="text-sm text-blue-400 hover:underline flex items-center space-x-1"
-                                    onClick={(e) => {
+                                <ActionButton
+                                    icon="👍"
+                                    text={`${post.likes} Likes`}
+                                    onClick={() => {
                                         e.stopPropagation();
                                         likesCounter(post.id);
                                     }}
-                                > 
-                                    <span>👍</span>
-                                    <span>{post.likes} Likes</span>
-                                </button>
-                                <button
-                                    className="text-sm text-blue-400 hover:underline flex items-center space-x-1"
+                                />
+                                <ActionButton
+                                    icon="💬"
+                                    text={`${post.commentsList?.length || 0} Comments`}
                                     onClick={(e) => {
-                                        e.stopPropagation(); //Prevents post click
+                                        e.stopPropagation();
                                         toggleComments(post.id);
                                     }}
-                                >
-                                    <span>💬</span>
-                                    <span>{post.commentsList?.length || 0} Comments</span>
-                                </button>
+                                />
                             </div>
 
                             {/**Comments Section*/}
