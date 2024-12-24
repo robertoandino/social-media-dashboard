@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, memo } from 'react';
 import ActionButton from './ActionButton';
 
 function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }) {
@@ -64,6 +64,18 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
             [postId]: "",
         }));
     };
+
+    //Using react.memo to prevent unnecessary re-renders for comments
+    const CommentList = memo(({ comments }) => (
+        <>
+            {comments.map((comment, index) => (
+                <div key={index} className="text-gray-400 text-sm mb-2">
+                    <span className="font-bold">{comment.user}: </span>
+                    {comment.text}
+                </div>
+            ))}
+        </>
+    ))
 
     return (
         <div className="relative p-6 bg-gray-700 rounded-lg shadow-lg transition-all duration-500 ease-in-out">
@@ -179,12 +191,7 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
                                 <div className="mt-4 p-4 bg-gray-700 rounded-lg shadow-inner">
                                     <h4 className="text-sm font-semibold text-gray-200 mb-2">Comments:</h4>
                                     {post.commentsList && post.commentsList.length > 0 ? (
-                                        post.commentsList.map((comment, index) => (
-                                            <div key={index} className="text-gray-400 text-sm mb-2">
-                                                <span className="font-bold">{comment.user}: </span>
-                                                {comment.text}
-                                            </div>
-                                        ))
+                                        <CommentList comments={post.commentsList} />
                                     ) : (
                                         <p className="text-gray-500 text-sm">No comments yet.</p>
                                     )}
