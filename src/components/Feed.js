@@ -213,7 +213,7 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
                                             onClick={(e) => {
                                                 e.stopPropagation(); 
                                                 addComment(post.id);
-                                                console.log(post.commentsList)
+                                                //console.log(post.commentsList)
                                             }}
                                         >
                                             Post Comment
