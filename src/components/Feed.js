@@ -64,6 +64,19 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
             [postId]: "",
         }));
     };
+    
+    /** <div className={`p-0.5 rounded-full bg-gradient-to-r 
+    ${post.color === "red" ? "from-yellow-500 via-orange-500 to-red-500" : 
+    post.color === "purple" ?  "from-purple-500 via-indigo-500" :
+    "from-yellow-500 via-black-500"}`}>
+<div className="border border-gray-700 rounded-full p-3 bg-gray-800">
+    <img
+        src={post.avatar}
+        alt={`${post.user}'s avatar`}
+        className="w-10 h-10 rounded-full"
+    />
+</div>
+</div> */
 
     //Using react.memo to prevent unnecessary re-renders for comments
     const CommentList = memo(({ comments }) => (
@@ -74,15 +87,17 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
                         ${comment.color === "red"
                             ? "from-yellow-500 via-orange-500 to-red-500"
                             : comment.color === "purple"
-                            ? "from-purple-500 via-indigo-500"
-                            : "from-yellow-500 via-black-500"
+                            ? "from-purple-500 via-indigo-500 to-purple-500"
+                            : "from-yellow-500 via-black-500 to-yellow-500"
                         }`}
                     >
-                        <img
-                            src={comment.avatar || 'default-avatar.png'} 
-                            alt={`${comment.user}'s avatar`}
-                            className="w-8 h-8 rounded-full"
-                        />
+                        <div className="border border-gray-700 rounded-full p-3 bg-gray-800">
+                            <img
+                                src={comment.avatar || 'default-avatar.png'} 
+                                alt={`${comment.user}'s avatar`}
+                                className="w-8 h-8 rounded-full"
+                            />
+                        </div>
                     </div>
                     <div className="flex-1 bg-gray-800 p-3 rounded-lg">
                         <span className="block text-sm font-bold text-white">{comment.user}</span>
