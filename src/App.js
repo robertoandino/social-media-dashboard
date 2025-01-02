@@ -24,8 +24,8 @@ const users = [
     color: "yellow",
     images: [],
     commentsList: [
-      { user: "John", avatar: Avatar3, text: "Nice post!"},
-      { user: "Bob", avatar: Avatar2, text: "Totally agree!"},
+      { user: "John", avatar: Avatar3, text: "Nice post!", color: "red"},
+      { user: "Bob", avatar: Avatar2, text: "Totally agree!", color: "purple"},
     ],
   },
   {
@@ -42,8 +42,8 @@ const users = [
     timestamp: "5 hours ago",
     color: "purple",
     commentsList: [
-      { user: "John", avatar: Avatar3, text: "Nice post!"},
-      { user: "Bob", avatar: Avatar2, text: "Totally agree!"},
+      { user: "John", avatar: Avatar3, text: "Nice post!", color: "red"},
+      { user: "Bob", avatar: Avatar2, text: "Totally agree!", color: "purple"},
     ],
   },
   {
@@ -60,8 +60,8 @@ const users = [
     timestamp: "7 hours ago",
     color: "red",
     commentsList: [
-      { user: "John", avatar: Avatar3, text: "Nice post!"},
-      { user: "Bob", avatar: Avatar2, text: "Totally agree!"},
+      { user: "John", avatar: Avatar3, text: "Nice post!", color: "red"},
+      { user: "Bob", avatar: Avatar2, text: "Totally agree!", color: "purple"},
     ],
   }
 ];

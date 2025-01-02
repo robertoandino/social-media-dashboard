@@ -71,9 +71,9 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
             {comments.map((comment, index) => (
                 <div key={index} className="flex items-start space-x-3 mb-4">
                     <div className={`p-0.5 rounded-full bg-gradient-to-r
-                        ${comment.user.color === "red"
+                        ${comment.color === "red"
                             ? "from-yellow-500 via-orange-500 to-red-500"
-                            : comment.user.color === "purple"
+                            : comment.color === "purple"
                             ? "from-purple-500 via-indigo-500"
                             : "from-yellow-500 via-black-500"
                         }`}
