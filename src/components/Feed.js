@@ -70,11 +70,20 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
         <>
             {comments.map((comment, index) => (
                 <div key={index} className="flex items-start space-x-3 mb-4">
-                    <img
-                        src={comment.avatar || 'default-avatar.png'} 
-                        alt={`${comment.user}'s avatar`}
-                        className="w-8 h-8 rounded-full"
-                    />
+                    <div className={`p-0.5 rounded-full bg-gradient-to-r
+                        ${comment.user.color === "red"
+                            ? "from-yellow-500 via-orange-500 to-red-500"
+                            : comment.user.color === "purple"
+                            ? "from-purple-500 via-indigo-500"
+                            : "from-yellow-500 via-black-500"
+                        }`}
+                    >
+                        <img
+                            src={comment.avatar || 'default-avatar.png'} 
+                            alt={`${comment.user}'s avatar`}
+                            className="w-8 h-8 rounded-full"
+                        />
+                    </div>
                     <div className="flex-1 bg-gray-800 p-3 rounded-lg">
                         <span className="block text-sm font-bold text-white">{comment.user}</span>
                         <span className="block text-sm text-gray-400">{comment.text}</span>
@@ -83,6 +92,7 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
             ))}
         </>
     ))
+
 
     return (
         <div className="relative p-6 bg-gray-700 rounded-lg shadow-lg transition-all duration-500 ease-in-out">
