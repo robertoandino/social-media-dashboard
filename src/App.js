@@ -125,7 +125,7 @@ function App() {
         {/**Right Column*/}
         <div className="lg:col-span-2 space-y-6">
           <CreatePost user={selectedUser} onAnimatePost={handlePostAnimation} />
-          <Feed posts={posts} onUserClick={setSelectedUser} animatedPost={animatedPost} onUpdatedPosts={handleUpdatedPosts} likesCounter={likesCounter}/>
+          <Feed posts={posts} selectedUser={selectedUser} onUserClick={setSelectedUser} animatedPost={animatedPost} onUpdatedPosts={handleUpdatedPosts} likesCounter={likesCounter}/>
         </div>
       </div>
     </DashboardLayout>

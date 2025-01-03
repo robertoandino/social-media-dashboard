@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, memo } from 'react';
 import ActionButton from './ActionButton';
 
-function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }) {
+function Feed({ posts, selectedUser, onUserClick, animatedPost, onUpdatedPosts, likesCounter }) {
 
     const thoughtsRef = useRef(null);
     const [thoughtsPosition, setThoughtsPosition] = useState(0);
@@ -34,27 +34,27 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
 
     //Handles adding new comment
     const addComment = (postId) => {
-        const newComment = commentsInput[postId];
-        if(!newComment) return;
 
-        const updatedPosts = posts.map((post) => 
-            post.id === postId
-                ? {
+        const newComment = {
+            user: selectedUser.name, //selected users name
+            avatar: selectedUser.avatar, //selected users avatar 
+            text: commentsInput[postId], 
+            color: selectedUser.color, //selected users color
+        }
+
+        const updatedPosts = posts.map((post) => {
+            if(post.id === postId){
+                return {
                     ...post,
-                    commentsList: [
-                        ...(post.commentsList || []),
-                        { user: "Current User", text: newComment },
-                    ],
-                    comments: (post.comments || 0) + 1, //Increment comments count
-                }
-                : post
-        );
-
-        //console.log("Updated Posts:", updatedPosts)
+                    commentsList: [...post.commentsList, newComment]
+                };
+            }
+            return post;
+        });
 
         //Update parent state
         if(typeof onUpdatedPosts === "function"){
-            console.log("onUpdatedPosts is being called.");
+            //console.log("onUpdatedPosts is being called.");
             onUpdatedPosts(updatedPosts);
         }
 
@@ -64,19 +64,6 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
             [postId]: "",
         }));
     };
-    
-    /** <div className={`p-0.5 rounded-full bg-gradient-to-r 
-    ${post.color === "red" ? "from-yellow-500 via-orange-500 to-red-500" : 
-    post.color === "purple" ?  "from-purple-500 via-indigo-500" :
-    "from-yellow-500 via-black-500"}`}>
-<div className="border border-gray-700 rounded-full p-3 bg-gray-800">
-    <img
-        src={post.avatar}
-        alt={`${post.user}'s avatar`}
-        className="w-10 h-10 rounded-full"
-    />
-</div>
-</div> */
 
     //Using react.memo to prevent unnecessary re-renders for comments
     const CommentList = memo(({ comments }) => (
