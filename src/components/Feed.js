@@ -241,12 +241,18 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
                                             }
                                         />
                                         <button
-                                            className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
                                             onClick={(e) => {
                                                 e.stopPropagation(); 
                                                 addComment(post.id);
-                                                //console.log(post.commentsList)
                                             }}
+                                            className={`bg-gray-800 text-gray-300 font-semibold px-4 py-2 rounded-lg
+                                                    hove:bg-gradient-to-r ${
+                                                        post.color === "red" ? "hover:from-yellow-500 hover:via-orange-500 hover:via-500 hover:to-red-500"
+                                                        : post.color === "purple" ? "hover:from-purple-500 hover:via-indigo-500 hover:to-indigo-500"
+                                                        : "hover:from-yellow-500 hover:via-yellow-400 hover:to-green-300"
+                                                    }
+                                                    hover:scale-105 transition-all duration-200 ease-in-out focus:ring
+                                                    focus:ring-red-600 mt-2`}
                                         >
                                             Post Comment
                                         </button>
