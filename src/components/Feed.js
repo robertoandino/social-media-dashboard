@@ -246,7 +246,7 @@ function Feed({ posts, onUserClick, animatedPost, onUpdatedPosts, likesCounter }
                                                 addComment(post.id);
                                             }}
                                             className={`bg-gray-800 text-gray-300 font-semibold px-4 py-2 rounded-lg
-                                                    hove:bg-gradient-to-r ${
+                                                    hover:bg-gradient-to-r ${
                                                         post.color === "red" ? "hover:from-yellow-500 hover:via-orange-500 hover:via-500 hover:to-red-500"
                                                         : post.color === "purple" ? "hover:from-purple-500 hover:via-indigo-500 hover:to-indigo-500"
                                                         : "hover:from-yellow-500 hover:via-yellow-400 hover:to-green-300"
