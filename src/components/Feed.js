@@ -190,7 +190,7 @@ function Feed({ posts, selectedUser, onUserClick, animatedPost, onUpdatedPosts, 
                                 <ActionButton
                                     icon="👍"
                                     text={`${post.likes} Likes`}
-                                    onClick={() => {
+                                    onClick={(e) => {
                                         e.stopPropagation();
                                         likesCounter(post.id);
                                     }}
