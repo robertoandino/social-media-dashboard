@@ -98,7 +98,7 @@ function App() {
           const isLiked = likedPosts.includes(postId);
           return {
             ...post,
-            likes: isLiked ? post.likes - 1 : post.likes + 1,
+            likes: (post.likes || 0 ) + (isLiked ? -1 : 1),
           }
         }    
         return post;
