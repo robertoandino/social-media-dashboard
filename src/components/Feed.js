@@ -163,7 +163,6 @@ function Feed({ posts, selectedUser, onUserClick, animatedPost, onUpdatedPosts, 
                     <div
                         key={post.id}
                         className="p-4 bg-gray-800 rounded-lg shadow-mg flex items-start space-x-4 cursor-pointer"
-                        onClick={() => onUserClick(post)}
                     >
                         <div className={`p-0.5 rounded-full bg-gradient-to-r 
                                 ${post.color === "red" ? "from-yellow-500 via-orange-500 to-red-500" : 
@@ -174,6 +173,7 @@ function Feed({ posts, selectedUser, onUserClick, animatedPost, onUpdatedPosts, 
                                     src={post.avatar}
                                     alt={`${post.user}'s avatar`}
                                     className="w-10 h-10 rounded-full"
+                                    onClick={() => onUserClick(post)}
                                 />
                             </div>
                         </div>
