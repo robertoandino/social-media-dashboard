@@ -1,6 +1,23 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 function AIPanel(){
+    
+    const [messages, setMessages] = useState({
+        Red: [],
+        Purple: [],
+        Yellow: []
+    });
+
+    const [activeBot, setActiveBot] = useState('Red');
+    const [inputText, setInputText] = useState('');
+    const chatEndRef = useRef(null);
+
+    const suggestions = {
+        Red: ['Analyze my reach', 'Show engagement stats', 'Compare with last week'],
+        Purple: ['Best time to post?', 'Content ideas', 'Trending topics'],
+        Yellow: ['Create a meme', 'Add humor to post', 'Generate fun caption']
+    }
+
     return(
         /**Main Div*/
         <div
