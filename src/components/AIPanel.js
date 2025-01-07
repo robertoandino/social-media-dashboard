@@ -16,6 +16,35 @@ function AIPanel(){
         Red: ['Analyze my reach', 'Show engagement stats', 'Compare with last week'],
         Purple: ['Best time to post?', 'Content ideas', 'Trending topics'],
         Yellow: ['Create a meme', 'Add humor to post', 'Generate fun caption']
+    };
+
+    const scrollToBottom = () => {
+        chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+
+    useEffect(scrollToBottom, [messages]);
+
+    const handleSend = (bot) => {
+        if (!inputText.trim()) return;
+
+        setMessages(prev => ({
+            ...prev,
+            [bot]: [...prev[bot], { text: inputText, sender: 'user'}]
+        }))
+        
+        setInputText('');
+
+        //Simulating AI response
+        setTimeout(() => {
+            setMessages(prev => ({
+                ...prev,
+                [bot]: [...prev[bot], {
+                    text: `${bot} AI response to: ${inputText}`,
+                    sender: 'ai'
+                }]
+            }));
+        }, 1000);
+
     }
 
     return(
