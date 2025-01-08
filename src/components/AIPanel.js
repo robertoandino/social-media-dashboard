@@ -89,51 +89,40 @@ function AIPanel(){
                 ))}
             </div>
 
-            {/**AI Insights*/}
-            <div className="p-4 rounded-lg shadow-md mb-6">
-                <h2 className="text-lg font-bold mb-6">AI Insights</h2>
-                <ul>
-                    <li className="text-md text-gray-300 mb-6">
-                        <strong className="text-red-400">Red:</strong> "Your last post gained 10% more likes than average!"
-                    </li>
-                    <li className="text-md text-gray-300 mb-6">
-                        <strong className="text-purple-400">Purple:</strong> "Aalytics show your most active time is 6 PM."
-                    </li>
-                    <li className="text-md text-gray-300 mb-6">
-                        <strong className="text-yellow-400">Yellow:</strong> "Want to create a meme? I can help!"
-                    </li>
-                </ul>
-            </div>
-
-            {/**Quick Chat*/}
-            <div className="p-4 rounded-lg shadow-md">
-                <h2 className="text-lg font-bold mb-6">Ask AI</h2>
-                <div className="space-y-6">
-                    {["Red", "Purple", "Yellow"].map((bot, index) => (
-                        <div key={index} className="flex items-center space-x-4">
-
-                            <span className={
-                                `p-2 rounded-full animate-pulse bg-gradient-to-r
-                                ${bot === 'Red' ? 'from-yellow-500 via-orange-500 to-red-500' :
-                                  bot === 'Purple' ? 'from-purple-500 via-indigo-400 to-indigo-400' : 
-                                  'from-yellow-500 via-yellow-400 to-green-300'
-                                }`}
-                            ></span>
-                            
-                            <input
-                                type="text"
-                                placeholder={`Ask ${bot}...`}
-                                className={
-                                    `w-full p-2 text-white placeholder-white rounded-lg bg-gradient-to-r 
-                                    ${bot === 'Red' ? 'from-yellow-500 via-orange-500 to-red-500' :
-                                      bot === 'Purple' ? 'from-purple-500 via-indigo-400 to-indigo-400' : 
-                                      'from-yellow-500 via-yellow-400 to-green-300'
-                                    }`}
-                            />
+            {/** Chat Area */}
+            <div className="h-96 overflow-y-auto mb-4 rounded-lg bg-gray-700 p-4">
+                {messages[activeBot].map((msg, idx) => (
+                    <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-4`}>
+                        {msg.sender === 'ai' && (
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-r mr-2 flex items-center justify-center">
+                                {botPersonalities[activeBot].avatar}
+                            </div>
+                        )}
+                        <div className={`
+                            max-w-[70%] p-3 rounded-lg
+                            ${msg.sender === 'user'
+                                ? 'bg-blue-600'
+                                : `bg-gradient-to-r ${botPersonalities[activeBot].theme}`}   
+                        `}>
+                            {msg.text}
+                            <div className="text-xs opacity-75 mt-1">
+                                {new Date().toLocaleTimeString()}
+                            </div>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
+                {isTyping && (
+                    <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-100"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-200"></div>
+                    </div>
+                )}
+                <div ref={chatEndRef}></div>
             </div>
+            
+
+            
         </div>
     )
 }
