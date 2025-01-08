@@ -66,7 +66,7 @@ function AIPanel(){
     return(
         /**Main Div*/
         <div
-            className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg max-w-sm"
+            className="relative bg-gray-800 text-white p-6 rounded-lg shadow-lg max-w-sm"
             style={{ height: "650px"}}
         >
             {/** Bot Selection Tabs */}
