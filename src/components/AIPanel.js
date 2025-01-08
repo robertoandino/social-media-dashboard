@@ -69,6 +69,26 @@ function AIPanel(){
             className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg max-w-sm"
             style={{ height: "650px"}}
         >
+            {/** Bot Selection Tabs */}
+            <div className="flex space-x-2 mb-6">
+                {Object.keys(botPersonalities).map(bot => (
+                    <button
+                        key={bot}
+                        onClick={() => setActiveBot(bot)}
+                        className={`
+                            flex items-center space-x-2 px-4 py-2 rounded-lg
+                            ${activeBot === bot
+                                ? `bg-gradient-to-r ${botPersonalities[bot].theme}`
+                                : 'bg-gray-600'
+                            }
+                            `}
+                    >
+                        <span>{botPersonalities[bot].avatar}</span>
+                        <span>{bot}</span>
+                    </button>
+                ))}
+            </div>
+
             {/**AI Insights*/}
             <div className="p-4 rounded-lg shadow-md mb-6">
                 <h2 className="text-lg font-bold mb-6">AI Insights</h2>
