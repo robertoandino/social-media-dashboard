@@ -120,9 +120,38 @@ function AIPanel(){
                 )}
                 <div ref={chatEndRef}></div>
             </div>
-            
 
+            {/** Suggestions Area */}
+            <div className="flex flex-wrap gap-2 mb-4">
+                {suggestions[activeBot].map((suggestion, idx) => (
+                    <button
+                        key={idx}
+                        onClick={() => setInputText(suggestion)}
+                        className="px-3 py-1 text-sm bg-gray-700 rounded-full hover:bg-gray-600"
+                    >
+                        {suggestion}
+                    </button>
+                ))}
+            </div>
             
+            {/** Input Area */}
+            <div className="flex space-x-2">
+                <input
+                    type="text"
+                    value={inputText}
+                    onChange={(e) => setInputText(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSend(activeBot)}
+                    placeHolder={`Ask ${activeBot}...`}
+                    className="w-full p-2 rounded-lg bg-gray-700 focus:outline-none focus:ring-2"
+                />
+                <button
+                    onClick={() => handleSend(activeBot)}
+                    className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700"
+                >
+                    Send
+                </button>
+            </div>
+
         </div>
     )
 }
