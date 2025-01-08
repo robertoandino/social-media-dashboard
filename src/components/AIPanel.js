@@ -10,6 +10,7 @@ function AIPanel(){
 
     const [activeBot, setActiveBot] = useState('Red');
     const [inputText, setInputText] = useState('');
+    const [isTyping, setIsTyping] = useState(false);
     const chatEndRef = useRef(null);
 
     const suggestions = {
@@ -17,6 +18,21 @@ function AIPanel(){
         Purple: ['Best time to post?', 'Content ideas', 'Trending topics'],
         Yellow: ['Create a meme', 'Add humor to post', 'Generate fun caption']
     };
+
+    const botPersonalities = {
+        Red: {
+            avatar: '📊',
+            theme: 'from-red-500 to-orange-600'
+        },
+        Purple: {
+            avatar: '🎯',
+            theme: 'from-purple-500 to-indigo-600'
+        },
+        Yellow: {
+            avatar: '😊',
+            theme: 'from-yellow-400 to-orange-500'
+        }
+    }
 
     const scrollToBottom = () => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
