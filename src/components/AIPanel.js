@@ -4,13 +4,13 @@ function AIPanel(){
     
     const [messages, setMessages] = useState({
         Red: [
-            { text: 'Hello! I am Red, your analytics assistant. How can I help you today?', sender: 'ai', reactions: [] }
+            { text: 'Hello! I am Red, your analytics assistant. How can I help you today?', sender: 'ai', reactions: {} }
         ],
         Purple: [
-            { text: 'Hi there! I am Purple, your content strategy advisor. What can I do for you?', sender: 'ai', reactions: [] }
+            { text: 'Hi there! I am Purple, your content strategy advisor. What can I do for you?', sender: 'ai', reactions: {} }
         ],
         Yellow: [
-            { text: 'Hey! I am Yellow, your creative assistant. Ready to create something fun?', sender: 'ai', reactions: [] }
+            { text: 'Hey! I am Yellow, your creative assistant. Ready to create something fun?', sender: 'ai', reactions: {} }
         ]
     });
 
@@ -73,12 +73,16 @@ function AIPanel(){
     const addReaction = (bot, messageIndex, reaction) => {
         setMessages(prev => {
             const newMessages = { ...prev };
-            if(newMessages[bot] && newMessages[bot][messageIndex]) {
-                newMessages[bot][messageIndex].reactions.push(reaction);
+            const message = newMessages[bot][messageIndex];
+            if(message){
+                if(!message.reactions[reaction]){
+                    message.reactions[reaction] = 0;
+                }
+                message.reactions[reaction] += 1;
             }
             return newMessages; 
-        })
-    }
+        });
+    };
 
     return(
         /**Main Div*/
@@ -126,8 +130,11 @@ function AIPanel(){
                                 {new Date().toLocaleTimeString()}
                             </div>
                             <div className="flex space-x-2 mt-2">
-                                {msg.reactions.map((reaction, rIdx) => (
-                                    <span key={rIdx}>{reaction}</span>
+                                {Object.entries(msg.reactions).map(([reaction, count]) => (
+                                    <div key={reaction} className="relative">
+                                        <span>{reaction}</span>
+                                        <span className="absolute top-0 right-0 text-xs bg-gray-800 rounded-full px-1">{count}</span>
+                                    </div>
                                 ))}
                                 <button onClick={() => addReaction(activeBot, idx, '👍')}>👍</button>
                                 <button onClick={() => addReaction(activeBot, idx, '❤️')}>❤️</button>
