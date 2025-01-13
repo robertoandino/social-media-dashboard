@@ -4,13 +4,13 @@ function AIPanel(){
     
     const [messages, setMessages] = useState({
         Red: [
-            { text: 'Hello! I am Red, your analytics assistant. How can I help you today?', sender: 'ai' }
+            { text: 'Hello! I am Red, your analytics assistant. How can I help you today?', sender: 'ai', reactions: [] }
         ],
         Purple: [
-            { text: 'Hi there! I am Purple, your content strategy advisor. What can I do for you?', sender: 'ai' }
+            { text: 'Hi there! I am Purple, your content strategy advisor. What can I do for you?', sender: 'ai', reactions: [] }
         ],
         Yellow: [
-            { text: 'Hey! I am Yellow, your creative assistant. Ready to create something fun?', sender: 'ai'}
+            { text: 'Hey! I am Yellow, your creative assistant. Ready to create something fun?', sender: 'ai', reactions: [] }
         ]
     });
 
@@ -51,22 +51,33 @@ function AIPanel(){
 
         setMessages(prev => ({
             ...prev,
-            [bot]: [...prev[bot], { text: inputText, sender: 'user'}]
-        }))
-        
+            [bot]: [...(prev[bot] || []), { text: inputText, sender: 'user', reactions: []}]
+        }));
         setInputText('');
+        setIsTyping(true);
 
         //Simulating AI response
         setTimeout(() => {
             setMessages(prev => ({
                 ...prev,
-                [bot]: [...prev[bot], {
+                [bot]: [...(prev[bot] || []), {
                     text: `${bot} AI response to: ${inputText}`,
-                    sender: 'ai'
+                    sender: 'ai',
+                    reactions: []
                 }]
             }));
+            setIsTyping(false);
         }, 1000);
+    };
 
+    const addReaction = (bot, messageIndex, reaction) => {
+        setMessages(prev => {
+            const newMessages = { ...prev };
+            if(newMessages[bot] && newMessages[bot][messageIndex]) {
+                newMessages[bot][messageIndex].reactions.push(reaction);
+            }
+            return newMessages; 
+        })
     }
 
     return(
@@ -97,7 +108,7 @@ function AIPanel(){
 
             {/** Chat Area */}
             <div className="h-96 overflow-y-auto mb-4 rounded-lg bg-gray-700 p-4">
-                {messages[activeBot].map((msg, idx) => (
+                {(messages[activeBot] || []).map((msg, idx) => (
                     <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-4`}>
                         {msg.sender === 'ai' && (
                             <div className="w-8 h-8 rounded-full bg-gradient-to-r mr-2 flex items-center justify-center">
@@ -114,6 +125,14 @@ function AIPanel(){
                             <div className="text-xs opacity-75 mt-1">
                                 {new Date().toLocaleTimeString()}
                             </div>
+                            <div className="flex space-x-2 mt-2">
+                                {msg.reactions.map((reaction, rIdx) => (
+                                    <span key={rIdx}>{reaction}</span>
+                                ))}
+                                <button onClick={() => addReaction(activeBot, idx, '👍')}>👍</button>
+                                <button onClick={() => addReaction(activeBot, idx, '❤️')}>❤️</button>
+                                <button onClick={() => addReaction(activeBot, idx, '😂')}>😂</button>
+                            </div>
                         </div>
                     </div>
                 ))}
@@ -129,7 +148,7 @@ function AIPanel(){
 
             {/** Suggestions Area */}
             <div className="flex flex-wrap gap-2 mb-4">
-                {suggestions[activeBot].map((suggestion, idx) => (
+                {(suggestions[activeBot] || []).map((suggestion, idx) => (
                     <button
                         key={idx}
                         onClick={() => setInputText(suggestion)}
