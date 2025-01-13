@@ -3,9 +3,15 @@ import React, { useState, useRef, useEffect } from 'react';
 function AIPanel(){
     
     const [messages, setMessages] = useState({
-        Red: [],
-        Purple: [],
-        Yellow: []
+        Red: [
+            { text: 'Hello! I am Red, your analytics assistant. How can I help you today?', sender: 'ai' }
+        ],
+        Purple: [
+            { text: 'Hi there! I am Purple, your content strategy advisor. What can I do for you?', sender: 'ai' }
+        ],
+        Yellow: [
+            { text: 'Hey! I am Yellow, your creative assistant. Ready to create something fun?', sender: 'ai'}
+        ]
     });
 
     const [activeBot, setActiveBot] = useState('Red');
