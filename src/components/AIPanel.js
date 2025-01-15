@@ -25,6 +25,18 @@ function AIPanel(){
         Yellow: ['Create a meme', 'Add humor to post', 'Generate fun caption']
     };
 
+    const AIResponses = {
+        'Analyze my reach': 'Sure, let me analyze your reach...',
+        'Show engagement stats': 'Here are your engagement stats...',
+        'Compare with last week': 'Comparing with last week...',
+        'Best time to post?': 'The best time to post is...',
+        'Content ideas': 'Here are some content ideas...',
+        'Trending topics': 'These are the trending topics...',
+        'Create a meme': 'Let\'s create a meme...',
+        'Add humor to post': 'Adding humor to your post....',
+        'Generate fun caption': 'Here is a fun caption...'
+    };
+
     const botPersonalities = {
         Red: {
             avatar: '📊',
