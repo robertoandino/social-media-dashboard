@@ -70,12 +70,13 @@ function AIPanel(){
 
         //Simulating AI response
         setTimeout(() => {
+            const response = AIResponses[inputText] || `${bot} AI response to: ${inputText}`;
             setMessages(prev => ({
                 ...prev,
                 [bot]: [...(prev[bot] || []), {
-                    text: `${bot} AI response to: ${inputText}`,
+                    text: response,
                     sender: 'ai',
-                    reactions: []
+                    reactions: {}
                 }]
             }));
             setIsTyping(false);
@@ -185,7 +186,7 @@ function AIPanel(){
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleSend(activeBot)}
-                    placeHolder={`Ask ${activeBot}...`}
+                    placeholder={`Ask ${activeBot}...`}
                     className="w-full p-2 rounded-lg bg-gray-700 focus:outline-none focus:ring-2"
                 />
                 <button
