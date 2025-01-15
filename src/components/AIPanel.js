@@ -52,12 +52,15 @@ function AIPanel(){
         }
     }
 
+    //Scroll to the bottom of the chat area
     const scrollToBottom = () => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
 
+    //Scroll to the bottom whenever messages change
     useEffect(scrollToBottom, [messages]);
 
+    //Handle sending a message
     const handleSend = (bot) => {
         if (!inputText.trim()) return;
 
@@ -83,6 +86,7 @@ function AIPanel(){
         }, 1000);
     };
 
+    //Add a reaction to a message
     const addReaction = (bot, messageIndex, reaction) => {
         setMessages(prev => {
             const newMessages = { ...prev };
