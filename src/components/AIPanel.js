@@ -66,7 +66,7 @@ function AIPanel(){
 
         setMessages(prev => ({
             ...prev,
-            [bot]: [...(prev[bot] || []), { text: inputText, sender: 'user', reactions: []}]
+            [bot]: [...(prev[bot] || []), { text: inputText, sender: 'user', reactions: {} }]
         }));
         setInputText('');
         setIsTyping(true);
@@ -93,9 +93,10 @@ function AIPanel(){
             const message = newMessages[bot][messageIndex];
             if(message){
                 if(!message.reactions[reaction]){
-                    message.reactions[reaction] = 0;
+                    message.reactions[reaction] = 1;
+                } else {
+                    message.reactions[reaction] += 1;
                 }
-                message.reactions[reaction] += 1;
             }
             return newMessages; 
         });
