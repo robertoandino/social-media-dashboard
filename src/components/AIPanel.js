@@ -129,7 +129,7 @@ function AIPanel(){
             </div>
 
             {/** Chat Area */}
-            <div className="h-96 overflow-y-auto mb-4 rounded-lg bg-gray-700 p-4">
+            <div className="h-96 overflow-y-auto mb-4 rounded-lg bg-gray-700 p-4 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-700">
                 {(messages[activeBot] || []).map((msg, idx) => (
                     <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-4`}>
                         {msg.sender === 'ai' && (
