@@ -8,13 +8,13 @@ function AIPanel(){
     
     const [messages, setMessages] = useState({
         Red: [
-            { text: 'Hello! I am Red, your analytics assistant. How can I help you today?', sender: 'ai', reactions: {} }
+            { text: 'Hello! I am Red, your analytics assistant. How can I help you today?', sender: 'ai', reactions: {}, timestamp: new Date() }
         ],
         Purple: [
-            { text: 'Hi there! I am Purple, your content strategy advisor. What can I do for you?', sender: 'ai', reactions: {} }
+            { text: 'Hi there! I am Purple, your content strategy advisor. What can I do for you?', sender: 'ai', reactions: {}, timestamp: new Date() }
         ],
         Yellow: [
-            { text: 'Hey! I am Yellow, your creative assistant. Ready to create something fun?', sender: 'ai', reactions: {} }
+            { text: 'Hey! I am Yellow, your creative assistant. Ready to create something fun?', sender: 'ai', reactions: {}, timestamp: new Date() }
         ]
     });
 
@@ -94,17 +94,26 @@ function AIPanel(){
     //Add a reaction to a message
     const addReaction = (bot, messageIndex, reaction) => {
         setMessages(prev => {
-            const newMessages = { ...prev };
-            const message = newMessages[bot][messageIndex];
-            if(message){
-                if(!message.reactions[reaction]){
-                    message.reactions[reaction] = 1;
-                } else {
-                    message.reactions[reaction] += 1;
-                }
-            }
-            return newMessages; 
+            const newMessages = { ...prev }; // Copy the messages object
+            const updatedBotMessages = [...newMessages[bot]]; // Copy the bot's message array
+            const message = { ...updatedBotMessages[messageIndex] }; // Copy the specific message
+            const updatedReactions = { ...message.reactions }; // Copy the reactions object
+                
+            // Update the reaction count immutably
+            updatedReactions[reaction] = (updatedReactions[reaction] || 0) + 1;
+    
+            // Replace the reactions in the message
+            message.reactions = updatedReactions;
+    
+            // Replace the updated message in the array
+            updatedBotMessages[messageIndex] = message;
+    
+            // Replace the updated array in the bot's messages
+            newMessages[bot] = updatedBotMessages;
+    
+            return newMessages; // Return the updated state
         });
+
     };
 
     return(
