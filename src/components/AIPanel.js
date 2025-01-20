@@ -1,4 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
+import botRed from '../pics/bots-red.svg';
+import botYellow from '../pics/bots-yellow.svg';
+import botPurple from '../pics/bots-purple.svg';
 
 function AIPanel(){
     
@@ -39,15 +42,15 @@ function AIPanel(){
 
     const botPersonalities = {
         Red: {
-            avatar: '📊',
+            avatar: botRed,
             theme: 'from-red-500 to-orange-600'
         },
         Purple: {
-            avatar: '🎯',
+            avatar: botPurple,
             theme: 'from-purple-500 to-indigo-600'
         },
         Yellow: {
-            avatar: '😊',
+            avatar: botYellow,
             theme: 'from-yellow-400 to-orange-500'
         }
     }
@@ -122,7 +125,7 @@ function AIPanel(){
                             }
                             `}
                     >
-                        <span>{botPersonalities[bot].avatar}</span>
+                        <img src={botPersonalities[bot].avatar} alt={`${bot} avatar`} className="w-6 h-6"/>
                         <span>{bot}</span>
                     </button>
                 ))}
@@ -134,7 +137,7 @@ function AIPanel(){
                     <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-4`}>
                         {msg.sender === 'ai' && (
                             <div className="w-8 h-8 rounded-full bg-gradient-to-r mr-2 flex items-center justify-center">
-                                {botPersonalities[activeBot].avatar}
+                                <img src={botPersonalities[activeBot].avatar} alt={`${activeBot} avatar`} className="w-6 h-6"/>
                             </div>
                         )}
                         <div className={`
