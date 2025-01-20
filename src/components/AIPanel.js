@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { formatDistanceToNow } from 'date-fns';
 import botRed from '../pics/bots-red.svg';
 import botYellow from '../pics/bots-yellow.svg';
 import botPurple from '../pics/bots-purple.svg';
@@ -69,7 +70,7 @@ function AIPanel(){
 
         setMessages(prev => ({
             ...prev,
-            [bot]: [...(prev[bot] || []), { text: inputText, sender: 'user', reactions: {} }]
+            [bot]: [...(prev[bot] || []), { text: inputText, sender: 'user', reactions: {}, timestamp: new Date() }]
         }));
         setInputText('');
         setIsTyping(true);
@@ -82,7 +83,8 @@ function AIPanel(){
                 [bot]: [...(prev[bot] || []), {
                     text: response,
                     sender: 'ai',
-                    reactions: {}
+                    reactions: {},
+                    timestamp: new Date()
                 }]
             }));
             setIsTyping(false);
@@ -148,7 +150,7 @@ function AIPanel(){
                         `}>
                             {msg.text}
                             <div className="text-xs opacity-75 mt-1">
-                                {new Date().toLocaleTimeString()}
+                                {msg.timestamp ? formatDistanceToNow(new Date(msg.timestamp), { addSuffix: true}) : ''}
                             </div>
                             <div className="flex space-x-2 mt-2">
                                 {Object.entries(msg.reactions).map(([reaction, count]) => (
