@@ -91,6 +91,14 @@ function AIPanel(){
         }, 1000);
     };
 
+    //Clear chat functionality
+    const clearChat = (bot) => {
+        setMessages(prev => ({
+            ...prev,
+            [bot]: []
+        }));
+    }
+
     //Add a reaction to a message
     const addReaction = (bot, messageIndex, reaction) => {
         setMessages(prev => {
@@ -98,7 +106,7 @@ function AIPanel(){
             const updatedBotMessages = [...newMessages[bot]]; // Copy the bot's message array
             const message = { ...updatedBotMessages[messageIndex] }; // Copy the specific message
             const updatedReactions = { ...message.reactions }; // Copy the reactions object
-                
+
             // Update the reaction count immutably
             updatedReactions[reaction] = (updatedReactions[reaction] || 0) + 1;
     
@@ -121,6 +129,8 @@ function AIPanel(){
         <div
             className="relative bg-gray-800 text-white p-6 rounded-lg shadow-lg max-w-sm"
             style={{ height: "650px"}}
+            role="complementary"
+            aria-label="AI Chat Panel"
         >
             {/** Bot Selection Tabs */}
             <div className="flex space-x-2 mb-6">
@@ -215,6 +225,15 @@ function AIPanel(){
                     Send
                 </button>
             </div>
+            {/** Clear Chat Button */}
+            <button
+                onClick={() => clearChat(activeBot)}
+                className="absolute right-2 p-4 text-sm text-gray-400 hover:text-white"
+                aria-label="Clear chat history"
+            >
+                Clear Chat
+            </button>
+
 
         </div>
     )
