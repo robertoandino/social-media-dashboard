@@ -44,15 +44,24 @@ function AIPanel(){
     const botPersonalities = {
         Red: {
             avatar: botRed,
-            theme: 'from-red-500 to-orange-600'
+            theme: 'from-red-500 to-orange-600',
+            typingSpeed: 50,
+            errorMessage: 'Analytics service unavialable. Please try again later.',
+            animation: 'animate-pulse'
         },
         Purple: {
             avatar: botPurple,
-            theme: 'from-purple-500 to-indigo-600'
+            theme: 'from-purple-500 to-indigo-600',
+            typingSpeed: 70,
+            errorMessage: 'Strategy service unavialable. Please try again later.',
+            animation: 'animate-bounce'
         },
         Yellow: {
             avatar: botYellow,
-            theme: 'from-yellow-400 to-orange-500'
+            theme: 'from-yellow-400 to-orange-500',
+            typingSpeed: 30,
+            errorMessage: 'Creative service unavailable. Please try again later.',
+            animation: 'animate-spin'
         }
     }
 
