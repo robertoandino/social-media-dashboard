@@ -155,7 +155,11 @@ function AIPanel(){
                             }
                             `}
                     >
-                        <img src={botPersonalities[bot].avatar} alt={`${bot} avatar`} className="w-6 h-6"/>
+                        <img 
+                            src={botPersonalities[bot].avatar} 
+                            alt={`${bot} avatar`} 
+                            className={`w-6 h-6 ${activeBot === bot ? botPersonalities[bot].animation : ''}`}
+                        />
                         <span>{bot}</span>
                     </button>
                 ))}
