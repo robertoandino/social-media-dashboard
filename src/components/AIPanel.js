@@ -128,7 +128,7 @@ function AIPanel(){
         /**Main Div*/
         <div
             className="relative bg-gray-800 text-white p-6 rounded-lg shadow-lg max-w-sm"
-            style={{ height: "650px"}}
+            style={{ height: "680px"}}
             role="complementary"
             aria-label="AI Chat Panel"
         >
@@ -228,7 +228,7 @@ function AIPanel(){
             {/** Clear Chat Button */}
             <button
                 onClick={() => clearChat(activeBot)}
-                className="absolute right-2 p-4 text-sm text-gray-400 hover:text-white"
+                className="absolute right-2 p-4 text-sm text-gray-400 hover:text-red-500"
                 aria-label="Clear chat history"
             >
                 Clear Chat
