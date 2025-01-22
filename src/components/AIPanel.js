@@ -23,6 +23,11 @@ function AIPanel(){
     const [isTyping, setIsTyping] = useState(false);
     const chatEndRef = useRef(null);
 
+    const [theme, setTheme] = useState(() => {
+        const savedTheme = localStorage.getItem('theme');
+        return savedTheme || 'dark';
+    });
+
     const suggestions = {
         Red: ['Analyze my reach', 'Show engagement stats', 'Compare with last week'],
         Purple: ['Best time to post?', 'Content ideas', 'Trending topics'],
@@ -64,6 +69,12 @@ function AIPanel(){
             animation: 'animate-spin'
         }
     }
+
+    //Theme effect
+    useEffect(() => {
+        document.documentElement.classList.toggle('dark', theme === 'dark')
+        localStorage.setItem('theme', theme);
+    }, [theme]);
 
     //Scroll to the bottom of the chat area
     const scrollToBottom = () => {
@@ -136,11 +147,19 @@ function AIPanel(){
     return(
         /**Main Div*/
         <div
-            className="relative bg-gray-800 text-white p-6 rounded-lg shadow-lg max-w-sm"
+            className={`relative p-6 rounded-lg shadow-lg max-w-sm`}
             style={{ height: "680px"}}
             role="complementary"
             aria-label="AI Chat Panel"
         >
+            {/** Theme Toggle */}
+            <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="absolute top-2 right-2"
+            >
+                {theme === 'dark' ? '🌞' : '🌙'}
+            </button>
+
             {/** Bot Selection Tabs */}
             <div className="flex space-x-2 mb-6">
                 {Object.keys(botPersonalities).map(bot => (
@@ -166,7 +185,17 @@ function AIPanel(){
             </div>
 
             {/** Chat Area */}
-            <div className="h-96 overflow-y-auto mb-4 rounded-lg bg-gray-700 p-4 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-700">
+            <div className={`
+                h-96 overflow-y-auto mb-4 rounded-lg p-4
+                ${theme === 'dark'
+                    ? 'bg-gray-700 text-white'
+                    : 'bg-gray-100 text-gray-800'}
+                scrollbar-thin
+                ${theme === 'dark'
+                    ? 'scrollbar-thumb-gray-500 scrollbar-track-gray-700'
+                    : 'scrollbar-thumb-gray-400 scrollbar-track-gray-200'}
+                transition-colors duration-200 ease-in-out
+            `}>
                 {(messages[activeBot] || []).map((msg, idx) => (
                     <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-4`}>
                         {msg.sender === 'ai' && (
