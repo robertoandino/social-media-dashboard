@@ -237,7 +237,7 @@ function AIPanel(){
                                 {msg.timestamp ? formatDistanceToNow(new Date(msg.timestamp), { addSuffix: true}) : ''}
                             </div>
                             <div className="flex space-x-2 mt-2">
-                                {Object.entries(msg.reactions).map(([reaction, count]) => (
+                                {msg.reactions && Object.entries(msg.reactions).map(([reaction, count]) => (
                                     <div key={reaction} className="relative">
                                         <span>{reaction}</span>
                                         <span className="absolute top-0 right-0 text-xs bg-gray-800 rounded-full px-1">{count}</span>
