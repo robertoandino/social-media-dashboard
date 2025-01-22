@@ -2,38 +2,23 @@ import React, { useState } from 'react';
 import botRed from '../pics/bots-red.svg';
 import botYellow from '../pics/bots-yellow.svg';
 import botPurple from '../pics/bots-purple.svg';
-import Ai from './Ai';
 
 function Navbar() {
-    const [activeBot, setActiveBot] = useState(null);
-
-    const toggleBot = (bot) => {
-        setActiveBot((prev) => (prev === bot ? null : bot))
-    }
 
     return (
         <div className="relative flex justify-between items-center p-4 bg-gray-800 shadow-md">
             
             {/**Bots*/}
             <div className="flex-grow mx-8 flex space-x-4 items-center">
-                <button 
-                    className="hover:scale-110 transition-transform"
-                    onClick={() => toggleBot('red')}
-                >
+                <div className="hover:scale-110 transition-transform">
                     <img src={botRed} alt="Red Bot" className="h-20 w-auto"/>
-                </button>
-                <button 
-                    className="hover:scale-110 transition-transform"
-                    onClick={() => toggleBot('purple')}
-                >
+                </div>
+                <div className="hover:scale-110 transition-transform">
                     <img src={botPurple} alt="Purple Bot" className="h-20 w-auto"/>
-                </button>
-                <button 
-                    className="hover:scale-110 transition-transform"
-                    onClick={() => toggleBot('yellow')}    
-                >
+                </div>
+                <div className="hover:scale-110 transition-transform">
                     <img src={botYellow} alt="Yellow Bot" className="h-20 w-auto"/>
-                </button>
+                </div>
             </div>
         
             {/**Right Info*/}
@@ -47,10 +32,6 @@ function Navbar() {
                 </button>
             </div>
 
-            {/**Ai*/}
-            {activeBot && (
-                <Ai activeBot={activeBot} setActiveBot={setActiveBot}/>
-            )}
         </div>
     );
 }

@@ -128,7 +128,7 @@ function AIPanel(){
         } catch (error) { 
             console.error('Error fetching response: ', error);
             setIsError(true);
-            setErrorMesssage('Error communicating with AI.');
+            setErrorMesssage('Error communicating with AI. Server has to be running.');
         } finally {
             setIsTyping(false);
         }

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Draggable from 'react-draggable';
 
+//Component not being used at the moment.
+//Will save for future reference.
+
 function Ai({ activeBot, setActiveBot }){
 
     const [userInput, setUserInput] = useState('');
