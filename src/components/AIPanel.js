@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { formatDistanceToNow } from 'date-fns';
+import axios from 'axios';
 import botRed from '../pics/bots-red.svg';
 import botYellow from '../pics/bots-yellow.svg';
 import botPurple from '../pics/bots-purple.svg';
@@ -23,6 +24,11 @@ function AIPanel(){
     const [isTyping, setIsTyping] = useState(false);
     const chatEndRef = useRef(null);
 
+    //Api Communication
+    const [isError, setIsError] = useState(false);
+    const [errorMessage, setErrorMesssage] = useState('');
+    
+    //Theme state
     const [theme, setTheme] = useState(() => {
         const savedTheme = localStorage.getItem('theme');
         return savedTheme || 'dark';
@@ -85,30 +91,47 @@ function AIPanel(){
     useEffect(scrollToBottom, [messages]);
 
     //Handle sending a message
-    const handleSend = (bot) => {
+    const handleSend = async (bot) => {
         if (!inputText.trim()) return;
 
-        setMessages(prev => ({
-            ...prev,
-            [bot]: [...(prev[bot] || []), { text: inputText, sender: 'user', reactions: {}, timestamp: new Date() }]
-        }));
-        setInputText('');
-        setIsTyping(true);
+        try {
+            setIsTyping(true);
+            setIsError(false);
 
-        //Simulating AI response
-        setTimeout(() => {
-            const response = AIResponses[inputText] || `${bot} AI response to: ${inputText}`;
+            //User message
             setMessages(prev => ({
                 ...prev,
                 [bot]: [...(prev[bot] || []), {
-                    text: response,
-                    sender: 'ai',
+                    text: inputText,
+                    sender: 'user',
                     reactions: {},
                     timestamp: new Date()
                 }]
             }));
+            setInputText('');
+
+            //AI response from API (HUGGING_FACE_API_URL)
+            const response = await axios.post('http://localhost:5000/api/bot', {
+                message: inputText,
+            });
+
+            //Add AI response to messages
+            setMessages(prev => ({
+                ...prev,
+                [bot]: [...(prev[bot] || []), {
+                    text: response.data[0].generated_text || 'No response.',
+                    sender: 'ai',
+                    reacitons: {},
+                    timestamp: new Date()
+                }]
+            }));
+        } catch (error) { 
+            console.error('Error fetching response: ', error);
+            setIsError(true);
+            setErrorMesssage('Error communicating with AI.');
+        } finally {
             setIsTyping(false);
-        }, 1000);
+        }
     };
 
     //Clear chat functionality
@@ -236,6 +259,13 @@ function AIPanel(){
                 )}
                 <div ref={chatEndRef}></div>
             </div>
+
+            {/** Error message */}
+            {isError && (
+                <div className="bg-red-500 text-white p-2 rounded mb-4">
+                    {errorMessage}
+                </div>
+            )}
 
             {/** Suggestions Area */}
             <div className="flex flex-wrap gap-2 mb-4">
