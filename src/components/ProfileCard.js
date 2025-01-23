@@ -4,38 +4,13 @@ import goat from '../profilePics/goat.jpg'
 import horse from '../profilePics/horse.jpg'
 import dog from '../profilePics/frenchDog.jpg'
 
-const ProfileCard = memo(({ user }) => {
+function ProfileCard({ user }) {
 
     const [selectedImage, setSelectedImage] = useState(null);
     const [isAnimating, setIsAnimating] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-    const [imageError, setImageError] = useState(false);
-    const [imagesPreloaded, setImagesPreloaded] = useState(false);
-
+    const [loadedImages, setLoadedImages] = useState(new Set());
+    const [imageErrors, setImageErrors] = useState(new Set());
     const images = [bird, goat, horse, dog];
-    const fallbackImage = 'Not set up yet';
-
-    //Preloading images
-    useEffect(() => {
-        const preloadImages = async () => {
-            try {
-                await Promise.all(
-                    images.map(src => {
-                        return new Promise((resolve, reject) => {
-                            const img = new Image();
-                            img.src = src;
-                            img.onLoad = resolve();
-                            img.onerror = reject();
-                        });
-                    })
-                );
-                setImagesPreloaded(true);
-            } catch (error) {
-                console.error('Failed to preload images:', error);;
-            }
-        };
-        preloadImages();
-    }, []);
 
     const handleImageClick = (image) => {
         setSelectedImage(image)
@@ -47,19 +22,42 @@ const ProfileCard = memo(({ user }) => {
         setTimeout(() => setSelectedImage(null), 300);
     }
 
-    // Loading state
-    if (!imagesPreloaded) {
+    //Loading state for images
+    const ImageSkeleton = () => {
+        <div className="w-24 h-24 rounded-lg bg-gray-600 animate-pulse"/>
+    }
+
+    //Image component with loading state
+    const LoadingImage = ({ src, index, onClick }) => {
+        const isLoaded = loadedImages.has(src);
+        const hasError = imageErrors.has(src);
+
+        const handleLoad = () => {
+            setLoadedImages(prev => new Set([...prev, src]));
+        };
+
+        const handleError = () => {
+            setImageErrors(prev => new Set([...prev, src]));
+        };
+
+        if (hasError) {
+            return <div className="w-24 h-24 rounded-lg bg-red-500/20 flex items-center justify-center">❌</div>
+        }
+
         return (
-            <div className="animate-pulse bg-gray-700 rounded-lg p-6" style={{ height: "550px"}}>
-                <div className="flex items-center space-x-4">
-                    <div className="rounded-full bg-gray-600 h-24 w-24"></div>
-                    <div className="space-y-3">
-                        <div className="h-4 bg-gray-600 rounded w-20"></div>
-                        <div className="h-3 bg-gray-600 rounded w-16"></div>
-                    </div>
-                </div>
-            </div>
-        );
+            <>
+                {!isLoaded && <ImageSkeleton />}
+                <img
+                    src={src}
+                    alt={`pic-${index + 1}`}
+                    onClick={onClick}
+                    onLoad={handleLoad}
+                    onError={handleError}
+                    className={`w-24 h-24 rounded-lg cursor-pointer transform transition-transform
+                        duration-300 hover:scale-110 ${isLoaded ? 'block' : 'hidden'}`}
+                />
+            </>
+        )
     }
 
     return (
@@ -157,6 +155,6 @@ const ProfileCard = memo(({ user }) => {
             )}
         </div>
     );
-});
+}
 
 export default ProfileCard;
