@@ -47,6 +47,8 @@ const ProfileCard = memo(({ user }) => {
         setTimeout(() => setSelectedImage(null), 300);
     }
 
+    
+
     return (
         <div 
             className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg max-w-sm"
