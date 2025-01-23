@@ -47,7 +47,20 @@ const ProfileCard = memo(({ user }) => {
         setTimeout(() => setSelectedImage(null), 300);
     }
 
-    
+    // Loading state
+    if (!imagesPreloaded) {
+        return (
+            <div className="animate-pulse bg-gray-700 rounded-lg p-6" style={{ height: "550px"}}>
+                <div className="flex items-center space-x-4">
+                    <div className="rounded-full bg-gray-600 h-24 w-24"></div>
+                    <div className="space-y-3">
+                        <div className="h-4 bg-gray-600 rounded w-20"></div>
+                        <div className="h-3 bg-gray-600 rounded w-16"></div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div 
