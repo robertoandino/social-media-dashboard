@@ -107,28 +107,18 @@ function ProfileCard({ user }) {
 
             {/*Images*/}
             <div className="mt-6 flex justify-center space-x-6">
-                {images.slice(0, 3).map((img, index) => (
-                    <img
-                        key={index}
-                        src={img}
-                        alt={`pic-${index + 3}`}
-                        onClick={() => handleImageClick(img)}
-                        className="w-24 h-24 rounded-lg cursor-pointer transform transition-transform
-                                duration-300 hover:scale-110"
-                    />
-                ))}
+                <ImageGrid
+                    images={images.slice(0,3)}
+                    startIndex={0}
+                    handleImageClick={handleImageClick}
+                />
             </div>
             <div className="mt-6 flex justify-center space-x-6">
-                {images.slice(3).map((img, index) => (
-                    <img
-                        key={index}
-                        src={img}
-                        alt={`pic-${index + 3}`}
-                        onClick={() => handleImageClick(img)}
-                        className="w-24 h-24 rounded-lg cursor-pointer transform transition-transform
-                                    duration-300 hover:scale-110"
-                    />
-                ))}
+                <ImageGrid
+                    images={images.slice(3)}
+                    startIndex={0}
+                    handleImageClick={handleImageClick}
+                />
             </div>
 
             {/*Modal*/}
