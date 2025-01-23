@@ -15,6 +15,28 @@ const ProfileCard = memo(({ user }) => {
     const images = [bird, goat, horse, dog];
     const fallbackImage = 'Not set up yet';
 
+    //Preloading images
+    useEffect(() => {
+        const preloadImages = async () => {
+            try {
+                await Promise.all(
+                    images.map(src => {
+                        return new Promise((resolve, reject) => {
+                            const img = new Image();
+                            img.src = src;
+                            img.onLoad = resolve();
+                            img.onerror = reject();
+                        });
+                    })
+                );
+                setImagesPreloaded(true);
+            } catch (error) {
+                console.error('Failed to preload images:', error);;
+            }
+        };
+        preloadImages();
+    }, []);
+
     const handleImageClick = (image) => {
         setSelectedImage(image)
         setIsAnimating(true);
