@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, memo, useEffect } from 'react';
 import bird from '../profilePics/bird.jpg'
 import goat from '../profilePics/goat.jpg'
 import horse from '../profilePics/horse.jpg'
 import dog from '../profilePics/frenchDog.jpg'
 
-function ProfileCard({ user }) {
+const ProfileCard = memo(({ user }) => {
 
     const [selectedImage, setSelectedImage] = useState(null);
     const [isAnimating, setIsAnimating] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [imageError, setImageError] = useState(false);
+    const [imagesPreloaded, setImagesPreloaded] = useState(false);
 
     const images = [bird, goat, horse, dog];
+    const fallbackImage = 'Not set up yet';
 
     const handleImageClick = (image) => {
         setSelectedImage(image)
@@ -116,6 +120,6 @@ function ProfileCard({ user }) {
             )}
         </div>
     );
-}
+});
 
 export default ProfileCard;
