@@ -8,6 +8,10 @@ function DashboardLayout({ children }) {
         setIsSidebarOpen(!isSidebarOpen)
     }
 
+    const handleNavigate = (page) => {
+        console.log('Navigating to: ' + page);
+    }
+
     return (
         <div className="flex h-screen overflow-hidden bg-gray-900">
             <div
@@ -18,7 +22,7 @@ function DashboardLayout({ children }) {
                 `}
                 aria-label="Sidebar"
             >
-                <Sidebar />
+                <Sidebar onNavigate={handleNavigate}/>
             </div>
             
             {/*Main Content*/}
