@@ -136,10 +136,10 @@ function ProfileCard({ user }) {
             {selectedImageIndex !== null && (
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center bg-black
-                                bg-opacity-70 backdrop-blur-sm transition-opacity"
+                                bg-opacity-70 backdrop-blur-sm"
                     onClick={closeModal}
                 >
-                    <div className="relative">
+                    <div className="relative bg-white rounded-lg p-4 max-w-[50vw] max-h-50vh] overflow-auto">
                         {/**Previous Button*/}
                         <button
                             className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/30
