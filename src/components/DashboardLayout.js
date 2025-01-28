@@ -16,10 +16,12 @@ function DashboardLayout({ children }) {
                     transition-transform duration-300 ease-in-out bg-gray-800 w-64
                     h-full text-white fixed top-0 left-0 z-10
                 `}
+                aria-label="Sidebar"
             >
                 <Sidebar />
             </div>
-
+            
+            {/*Main Content*/}
             <div 
                 className={`
                     flex-1 flex flex-col overflow-y-auto transition-all 

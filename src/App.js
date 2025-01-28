@@ -84,6 +84,7 @@ function App() {
         ...prevPosts,
       ]);
       setAnimatedPost(null);
+      window.scrollTo({ top: 0, behavior: 'smooth' }); //Smooth scroll to top
     }, 1000);
   };
 
