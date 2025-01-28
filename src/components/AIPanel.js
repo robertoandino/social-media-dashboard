@@ -184,7 +184,7 @@ function AIPanel(){
             </button>
 
             {/** Bot Selection Tabs */}
-            <div className="flex space-x-2 mb-6">
+            <div className="flex justify-center space-x-6 mb-6">
                 {Object.keys(botPersonalities).map(bot => (
                     <button
                         key={bot}
@@ -192,7 +192,7 @@ function AIPanel(){
                         className={`
                             flex items-center space-x-2 px-4 py-2 rounded-lg
                             ${activeBot === bot
-                                ? `bg-gradient-to-r ${botPersonalities[bot].theme}`
+                                ? `bg-gradient-to-r ${botPersonalities[bot].theme} ring-2 ring-black`
                                 : 'bg-gray-600'
                             }
                             `}
@@ -202,7 +202,6 @@ function AIPanel(){
                             alt={`${bot} avatar`} 
                             className={`w-6 h-6 ${activeBot === bot ? botPersonalities[bot].animation : ''}`}
                         />
-                        <span>{bot}</span>
                     </button>
                 ))}
             </div>
