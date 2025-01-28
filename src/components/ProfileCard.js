@@ -139,7 +139,7 @@ function ProfileCard({ user }) {
                                 bg-opacity-70 backdrop-blur-sm"
                     onClick={closeModal}
                 >
-                    <div className="relative rounded-lg p-4 max-w-[50vw] max-h-[90vh] overflow-auto">
+                    <div className="relative rounded-lg p-4 max-w-[50vw] max-h-[100vh] overflow-auto">
                         {/**Previous Button*/}
                         <button
                             className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/30
