@@ -127,7 +127,7 @@ function ProfileCard({ user }) {
             <div className="mt-6 flex justify-center space-x-6">
                 <ImageGrid
                     images={images.slice(3)}
-                    startIndex={0}
+                    startIndex={3}
                     handleImageClick={handleImageClick}
                 />
             </div>
@@ -139,7 +139,7 @@ function ProfileCard({ user }) {
                                 bg-opacity-70 backdrop-blur-sm"
                     onClick={closeModal}
                 >
-                    <div className="relative bg-white rounded-lg p-4 max-w-[50vw] max-h-50vh] overflow-auto">
+                    <div className="relative rounded-lg p-4 max-w-[50vw] max-h-[90vh] overflow-auto">
                         {/**Previous Button*/}
                         <button
                             className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/30
