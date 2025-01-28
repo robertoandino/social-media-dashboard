@@ -1,4 +1,4 @@
-import React, { useState, memo, useEffect } from 'react';
+import React, { useState, memo } from 'react';
 import bird from '../profilePics/bird.jpg'
 import goat from '../profilePics/goat.jpg'
 import horse from '../profilePics/horse.jpg'
@@ -9,7 +9,7 @@ function ProfileCard({ user }) {
     const [selectedImage, setSelectedImage] = useState(null);
     const [isAnimating, setIsAnimating] = useState(false);
     const [loadingImages, setLoadingImages] = useState(true);
-    const [failedImages, setFailesImages] = useState(new Set());
+    const [failedImages, setFailedImages] = useState(new Set());
     const images = [bird, goat, horse, dog];
 
     const handleImageClick = (image) => {
@@ -144,4 +144,4 @@ function ProfileCard({ user }) {
     );
 }
 
-export default ProfileCard;
+export default memo(ProfileCard);
