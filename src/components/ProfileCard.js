@@ -6,20 +6,31 @@ import dog from '../profilePics/frenchDog.jpg'
 
 function ProfileCard({ user }) {
 
-    const [selectedImage, setSelectedImage] = useState(null);
-    const [isAnimating, setIsAnimating] = useState(false);
+    const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+    //const [isAnimating, setIsAnimating] = useState(false);
     const [loadingImages, setLoadingImages] = useState(true);
     const [failedImages, setFailedImages] = useState(new Set());
     const images = [bird, goat, horse, dog];
 
-    const handleImageClick = (image) => {
-        setSelectedImage(image)
-        setIsAnimating(true);
-    }
+    const handleImageClick = (index) => {
+        setSelectedImageIndex(index)
+        //setIsAnimating(true);
+    };
 
     const closeModal = () => {
-        setIsAnimating(false);
-        setTimeout(() => setSelectedImage(null), 300);
+        //setIsAnimating(false);
+        //setTimeout(() => setSelectedImage(null), 300);
+        setSelectedImageIndex(null);
+    };
+
+    const goToNextImage = () => {
+        setSelectedImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    };
+
+    const goToPreviousImage = () => {
+        setSelectedImageIndex((prevIndex) => 
+            prevIndex === 0 ? images.length - 1 : prevIndex - 1
+        );
     }
 
     //Image Grid Component
@@ -35,7 +46,7 @@ function ProfileCard({ user }) {
                 <img
                     src={img}
                     alt={`pic-${startIndex + index + 1}`}
-                    onClick={() => handleImageClick(img)}
+                    onClick={() => handleImageClick(startIndex + index)}
                     onLoad={() => setLoadingImages(false)}
                     onError={() => {
                         setFailedImages(prev => new Set([...prev, img]));
@@ -122,22 +133,45 @@ function ProfileCard({ user }) {
             </div>
 
             {/*Modal*/}
-            {selectedImage && (
+            {selectedImageIndex !== null && (
                 <div
-                    className={`fixed inset-0 z-50 flex items-center justify-center bg-black
-                                bg-opacity-70 backdrop-blur-sm transition-opacity
-                                duration-300
-                                ${isAnimating ? "opacity-100" : "opacity-0"}`}
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black
+                                bg-opacity-70 backdrop-blur-sm transition-opacity"
                     onClick={closeModal}
                 >
-                    <img
-                        src={selectedImage}
-                        alt="Expanded"
-                        className={`max-w-full max-h-full p-4 transform transition-transform
-                                    duration-500 
-                                    ${isAnimating ? "scale-100" : "scale-50 opacity-0"}`}
-                        onClick={(e) => e.stopPropagation()}
-                    />
+                    <div className="relative">
+                        {/**Previous Button*/}
+                        <button
+                            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/30
+                                        text-white p-2 rounded-full hover:bg-white/50 transition-colors"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                goToPreviousImage();
+                            }}
+                        >
+                            &lt;
+                        </button>
+
+                        {/**Image*/}
+                        <img
+                            src={images[selectedImageIndex]}
+                            alt="Expanded"
+                            className="max-w-full max-h-full p-4"
+                            onClick={(e) => e.stopPropagation()}
+                        />
+
+                        {/**Next Button*/}
+                        <button
+                            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/30
+                                        text-white p-2 rounded-full hover:bg-white/50 transition-colors"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                goToNextImage();
+                            }}
+                        >
+                            &gt;
+                        </button>
+                    </div>
                 </div>
             )}
         </div>
