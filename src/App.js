@@ -145,7 +145,7 @@ function App() {
               </div>
             }
           />
-          <Route path="/profile" element={<ProfilePage/>} />
+          <Route path="/profile" element={<ProfilePage user={selectedUser}/>} />
           <Route path="/ai" element={<div>AI Page</div>} />
           <Route path="/settings" element={<div>Settings Page</div>} />
         </Routes>
