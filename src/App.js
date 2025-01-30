@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Feed from './components/Feed';
 import CreatePost from './components/CreatePost';
 import ProfileCard from './components/ProfileCard';
+import ProfilePage from './components/ProfilePage';
 import AIPanel from './components/AIPanel';
 import Avatar1 from './pics/adventurer-1731961900547.svg';
 import Avatar2 from './pics/adventurer-1731961906649.svg';
@@ -144,7 +145,7 @@ function App() {
               </div>
             }
           />
-          <Route path="/profile" element={<div>Profile Page</div>} />
+          <Route path="/profile" element={<ProfilePage/>} />
           <Route path="/ai" element={<div>AI Page</div>} />
           <Route path="/settings" element={<div>Settings Page</div>} />
         </Routes>
