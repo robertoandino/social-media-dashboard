@@ -40,7 +40,27 @@ function ProfilePage({ user }) {
                     </div>
                 </div>
 
-
+                {/**User Info*/}
+                <div className="mt-6">
+                    <p className="text-gray-300">
+                        {user.bio}
+                    </p>
+                </div>
+                <div className="mt-6 flex justify-between text-center">
+                    <div>
+                        <p className="text-lg font-semibold">{user.followers}</p>
+                        <p className="text-gray-400">Followers</p>
+                    </div>
+                    <div>
+                        <p className="text-lg font-semibold">{user.posts}</p>
+                        <p className="text-gray-400">Posts</p>
+                    </div>
+                    <div>
+                        <p className="text-lg font-semibold">{user.likes}</p>
+                        <p className="text-gray-400">Likes</p>
+                    </div>
+                </div>
+                
             </div>
         </div>
     )

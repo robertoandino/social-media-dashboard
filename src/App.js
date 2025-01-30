@@ -53,7 +53,7 @@ const users = [
     user: "John",
     job: "Unemployed",
     avatar: Avatar3,
-    bio: "Hhahahahahasaa.",
+    bio: "Striving for greatness one line of code at a time.",
     followers: 10210,
     posts: 323,
     likes: 2,
