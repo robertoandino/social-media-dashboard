@@ -25,7 +25,7 @@ function Sidebar() {
                     </li>
                     <li className="mb-4">
                         <Link
-                            tp="/AI"
+                            to="/ai"
                             className="hover:text-blue-500 w-full text-left"
                         >
                             AI

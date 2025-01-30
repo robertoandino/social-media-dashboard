@@ -145,7 +145,7 @@ function App() {
             }
           />
           <Route path="/profile" element={<div>Profile Page</div>} />
-          <Route path="/AI" element={<div>AI Page</div>} />
+          <Route path="/ai" element={<div>AI Page</div>} />
           <Route path="/settings" element={<div>Settings Page</div>} />
         </Routes>
       </DashboardLayout>
