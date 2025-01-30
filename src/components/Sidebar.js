@@ -1,42 +1,43 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Sidebar({ onNavigate}) {
+function Sidebar() {
     return (
         <div className="bg-gray-900 text-white w-64 h-screen p-5">
             <h2 className="text-xl font-bold mb-6">3Bots</h2>
             <nav>
                 <ul>
                     <li className="mb-4">
-                        <button
-                            onClick={() => onNavigate('home')}
+                        <Link
+                            to="/"
                             className="hover:text-blue-500 w-full text-left"
                         >
                             Home
-                        </button>
+                        </Link>
                     </li>
                     <li className="mb-4">
-                        <button
-                            onClick={() => onNavigate('profile')}
+                        <Link
+                            to="/profile"
                             className="hover:text-blue-500 w-full text-left"
                         >
                             Profile
-                        </button>
+                        </Link>
                     </li>
                     <li className="mb-4">
-                        <button
-                            onClick={() => onNavigate('AI')}
+                        <Link
+                            tp="/AI"
                             className="hover:text-blue-500 w-full text-left"
                         >
                             AI
-                        </button>
+                        </Link>
                     </li>
                     <li className="mb-4">
-                        <button
-                            onClick={() => onNavigate('settings')}
+                        <Link
+                            to="/settings"
                             className="hover:text-blue-500 w-full text-left"
                         >
                             Settings
-                        </button>
+                        </Link>
                     </li>
                 </ul>
             </nav>
