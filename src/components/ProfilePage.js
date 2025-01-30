@@ -3,8 +3,11 @@ import React from 'react';
 function ProfilePage({ user }) {
     return(
         <div className="flex justify-center items-start pt-14 h-screen">
-            <div className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg 
-                            w-full md:w-96 lg:w-120" 
+            {/**Main Content Container*/}
+            <div className="flex flex-col space-y-6 w-full max-w-6xl px-4">
+                {/**Profile Card*/}
+                <div className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg 
+                            w-full" 
             >
                 {/**Background*/}
                 <div
@@ -60,7 +63,11 @@ function ProfilePage({ user }) {
                         <p className="text-gray-400">Likes</p>
                     </div>
                 </div>
-                
+                </div>
+                {/**New Section*/}
+                <div className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg 
+                                w-full" 
+                ></div>
             </div>
         </div>
     )
