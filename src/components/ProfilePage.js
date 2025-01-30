@@ -6,8 +6,16 @@ function ProfilePage({ user }) {
             <div className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg 
                             w-full md:w-96 lg:w-120" 
             >
+                {/**Background*/}
+                <div
+                    className="absolute top-0 left-0 w-full h-32 bg-gradient-to-r from-purple-500
+                    to-indigo-500 rounded-t-lg"
+                >
+                </div>
+
                 {/**Profile*/}
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-4 relative z-10 mt-16">
+                    {/**Profile Pic*/}
                     <div className={`p-0.5 rounded-full bg-gradient-to-r
                                     ${user.color === "red" ? "from-yellow-500 via-orange-500 to-red-500" :
                                     user.color === "purple" ? "from-purple-500 via-indigo-400 to-indigo-400" :
@@ -22,11 +30,14 @@ function ProfilePage({ user }) {
                             />
                         </div>
                     </div>
+                    {/**User Info*/}
                     <div>
-                        <h2 className="text-xl font-bold">{user.user}</h2>
+                        <h2 className="text-xl font-bold mt-6">{user.user}</h2>
                         <p className="text-gray-400">{user.job}</p>
                     </div>
                 </div>
+
+
             </div>
         </div>
     )
