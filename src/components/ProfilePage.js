@@ -2,14 +2,17 @@ import React from 'react';
 
 function ProfilePage({ user }) {
     return(
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-start pt-14 h-screen">
             <div className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg 
                             w-full md:w-96 lg:w-120" 
             >
                 {/**Background*/}
                 <div
-                    className="absolute top-0 left-0 w-full h-32 bg-gradient-to-r from-purple-500
-                    to-indigo-500 rounded-t-lg"
+                    className={`absolute top-0 left-0 w-full h-32 rounded-t-lg bg-gradient-to-r 
+                                ${user.color === "red" ? "from-yellow-500 via-orange-500 to-red-500" :
+                                user.color === "purple" ? "from-purple-500 via-indigo-400 to-indigo-400" :
+                                "from-yellow-500 via-yellow-400 to-green-300" }`
+                                }
                 >
                 </div>
 
