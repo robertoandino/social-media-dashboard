@@ -67,7 +67,27 @@ function ProfilePage({ user }) {
                 {/**New Section*/}
                 <div className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg 
                                 w-full" 
-                ></div>
+                >
+                      <div className="mt-6">
+                    <p className="text-gray-300">
+                        NEW SECTION
+                    </p>
+                </div>
+                <div className="mt-6 flex justify-between text-center">
+                    <div>
+                        <p className="text-lg font-semibold">{user.followers}</p>
+                        <p className="text-gray-400">Button</p>
+                    </div>
+                    <div>
+                        <p className="text-lg font-semibold">{user.posts}</p>
+                        <p className="text-gray-400">Button</p>
+                    </div>
+                    <div>
+                        <p className="text-lg font-semibold">{user.likes}</p>
+                        <p className="text-gray-400">Button</p>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
     )
