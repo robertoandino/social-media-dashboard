@@ -43,7 +43,7 @@ function ProfilePage({ user }) {
                     </div>
                 </div>
 
-                {/**User Info*/}
+                {/**User Stats*/}
                 <div className="mt-6">
                     <p className="text-gray-300">
                         {user.bio}
@@ -64,29 +64,22 @@ function ProfilePage({ user }) {
                     </div>
                 </div>
                 </div>
-                {/**New Section*/}
+
+                {/**Gallery*/}
                 <div className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg 
                                 w-full" 
                 >
-                      <div className="mt-6">
-                    <p className="text-gray-300">
-                        NEW SECTION
-                    </p>
-                </div>
-                <div className="mt-6 flex justify-between text-center">
-                    <div>
-                        <p className="text-lg font-semibold">{user.followers}</p>
-                        <p className="text-gray-400">Button</p>
+                    <h2 className="text-xl font-bold mb-4">Gallery</h2>
+                    <div className="grid grid-cols-2 md:grid-cols-cols-3 gap-4">
+                        {user.images.map((image, index) => (
+                            <img
+                                key={index}
+                                src={image}
+                                alt={`Gallery Image ${index + 1}`}
+                                className="w-full h-32 object-cover rounded-lg"
+                            />
+                        ))}
                     </div>
-                    <div>
-                        <p className="text-lg font-semibold">{user.posts}</p>
-                        <p className="text-gray-400">Button</p>
-                    </div>
-                    <div>
-                        <p className="text-lg font-semibold">{user.likes}</p>
-                        <p className="text-gray-400">Button</p>
-                    </div>
-                </div>
                 </div>
             </div>
         </div>
