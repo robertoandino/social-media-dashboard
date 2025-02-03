@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from "react-modal-image";
 
 function ProfilePage({ user }) {
+    const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState("");
+
+    const openLightbox = (image) => {
+        setSelectedImage(image);
+        setIsLightboxOpen(true);
+    }
+
     return(
         <div className="flex justify-center items-start pt-14 h-screen">
             {/**Main Content Container*/}
