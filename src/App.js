@@ -10,6 +10,10 @@ import AIPanel from './components/AIPanel';
 import Avatar1 from './pics/adventurer-1731961900547.svg';
 import Avatar2 from './pics/adventurer-1731961906649.svg';
 import Avatar3 from './pics/adventurer-1731961910274.svg';
+import bird from './profilePics/bird.jpg'
+import goat from './profilePics/goat.jpg'
+import horse from './profilePics/horse.jpg'
+import dog from './profilePics/frenchDog.jpg'
 
 const users = [
   {
@@ -24,7 +28,7 @@ const users = [
     content: "Just posted a new blog!",
     timestamp: "2 hours ago",
     color: "yellow",
-    images: [],
+    images: [bird, goat, horse, dog],
     commentsList: [
       { user: "John", avatar: Avatar3, text: "Nice post!", color: "red"},
       { user: "Bob", avatar: Avatar2, text: "Totally agree!", color: "purple"},
@@ -39,7 +43,7 @@ const users = [
     followers: "1000",
     posts: 45,
     likes: 1,
-    images: [],
+    images: [bird, goat, horse, dog],
     content: "Check out my latest travel photos.",
     timestamp: "5 hours ago",
     color: "purple",
@@ -57,7 +61,7 @@ const users = [
     followers: 10210,
     posts: 323,
     likes: 2,
-    images: [],
+    images: [bird, goat, horse, dog],
     content: "HahahhhsHSAS.",
     timestamp: "7 hours ago",
     color: "red",
