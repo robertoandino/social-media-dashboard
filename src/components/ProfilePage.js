@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
-import Modal from "react-modal-image";
 
 function ProfilePage({ user }) {
-    const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState("");
+    const [selectedImageIndex, setSelectedImageIndex] = useStaate(null);
+    const [loadingImages, setLoadingImages] = useState(true);
+    const [failedImages, setFailedImages] = useState(new Set());
 
-    const openLightbox = (image) => {
-        setSelectedImage(image);
-        setIsLightboxOpen(true);
+    const handleImageClick = (index) => {
+        setSelectedImageIndex(index);
+    }
+
+    const closeModal = () => {
+        setSelectedImageIndex(null);
+    }
+
+    const goToNextImage = () => {
+        setSelectedImageIndex((prev) => (prev + 1) % images.length);
+    }
+
+    const goToPreviousImage = () => {
+        setSelectedImageIndex((prev) => prev === 0 ? images.length - 1 : prev - 1);
     }
 
     return(
@@ -79,17 +90,26 @@ function ProfilePage({ user }) {
                                 w-full" 
                 >
                     <h2 className="text-xl font-bold mb-4">Gallery</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-cols-3 gap-4">
-                        {user.images.map((image, index) => (
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        {user.images && user.images.map((image, index) => (
                             <img
                                 key={index}
                                 src={image}
                                 alt={`Gallery Image ${index + 1}`}
-                                className="w-full h-32 object-cover rounded-lg"
+                                className="w-full h-32 object-cover rounded-lg cursor-pointer"
+                                onClick={() => openLightbox(image)}
                             />
                         ))}
                     </div>
                 </div>
+                
+                {/**Lightbox*/}
+                {isLightboxOpen && (
+                    <Modal
+                        large={selectedImage}
+                        onClose={() => setIsLightboxOpen(false)}
+                    />
+                )}
             </div>
         </div>
     )
