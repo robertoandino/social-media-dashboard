@@ -32,7 +32,7 @@ function ProfilePage({ user }) {
             <div key={index} className="relative">
                 {/**Loading Skeleton*/}
                 {loadingImages && (
-                    <div className="absolute inset-0 w-24 rounded-lg bg-gray-800 animate-pulse"/>
+                    <div className="absolute inset-0 w-48 h-48 rounded-lg bg-gray-800 animate-pulse"/>
                 )}
 
                 {/**Image*/}
@@ -45,14 +45,14 @@ function ProfilePage({ user }) {
                         setLoadingImages((prev) => new Set([...prev, img]));
                         setLoadingImages(false);
                     }}
-                    className={`w-24 h-24 rounded-lg cursor-pointer transform transtion-transform duration-300
+                    className={`w-48 h-48 rounded-lg cursor-pointer transform transtion-transform duration-300
                         hover:scale-110 ${loadingImages ? 'opacity-0' : 'opacity-100'}`}
                     loading="lazy"
                 />
 
                 {/**Error state*/}
                 {failedImages.has(img) && (
-                    <div className="absolute inset-0 flex w-24 h-24 rounded-lg bg-red-500/20 flex items-cente justify-center">
+                    <div className="absolute inset-0 flex w-48 h-48 rounded-lg bg-red-500/20 flex items-cente justify-center">
                         ❌
                     </div>
                 )}
@@ -125,22 +125,24 @@ function ProfilePage({ user }) {
                 </div>
 
                 {/** Images */}
-                <div className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg 
-                            w-full">
-                    <div className="mt-6 flex justify-center space-x-6">
-                        <ImageGrid
-                            images={images.slice(0, 3)}
-                            startIndex={0}
+                <div className="relative bg-gray-700 p-6 rounded-lg shadow-lg w-full">
+                    <h2 className="text-xl font-bold mb-4">Gallery</h2>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                        <div className="mt-6 flex justify-center space-x-6">
+                            <ImageGrid
+                                images={images.slice(0, 3)}
+                                startIndex={0}
+                                handleImageClick={handleImageClick}
+                            />
+                        </div>
+                        <div className="mt-6 flex justify-center space-x-6">
+                            <ImageGrid
+                            images={images.slice(3)}
+                            startIndex={3}
                             handleImageClick={handleImageClick}
-                        />
+                            />
+                        </div>        
                     </div>
-                    <div className="mt-6 flex justify-center space-x-6">
-                        <ImageGrid
-                        images={images.slice(3)}
-                        startIndex={3}
-                        handleImageClick={handleImageClick}
-                        />
-                    </div>        
                 </div>
             </div>
 
