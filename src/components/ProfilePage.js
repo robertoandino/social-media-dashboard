@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
+import bird from '../profilePics/bird.jpg';
+import goat from '../profilePics/goat.jpg';
+import horse from '../profilePics/horse.jpg';
+import dog from '../profilePics/frenchDog.jpg';
 
 function ProfilePage({ user }) {
-    const [selectedImageIndex, setSelectedImageIndex] = useStaate(null);
+    const [selectedImageIndex, setSelectedImageIndex] = useState(null);
     const [loadingImages, setLoadingImages] = useState(true);
     const [failedImages, setFailedImages] = useState(new Set());
+    const images = [bird, goat, horse, dog];
 
     const handleImageClick = (index) => {
         setSelectedImageIndex(index);
@@ -19,6 +24,40 @@ function ProfilePage({ user }) {
 
     const goToPreviousImage = () => {
         setSelectedImageIndex((prev) => prev === 0 ? images.length - 1 : prev - 1);
+    }
+
+    //Image Grid Component
+    const ImageGrid = ({ images, startIndex, handleImageClick }) => {
+        return images.map((img, index) => (
+            <div key={index} className="relative">
+                {/**Loading Skeleton*/}
+                {loadingImages && (
+                    <div className="absolute inset-0 w-24 rounded-lg bg-gray-800 animate-pulse"/>
+                )}
+
+                {/**Image*/}
+                <img
+                    src={img}
+                    alt={`pic-${startIndex + index+1}`}
+                    onClick={() => handleImageClick(startIndex + index)}
+                    onLoad={() => setLoadingImages(false)}
+                    onError={() => {
+                        setLoadingImages((prev) => new Set([...prev, img]));
+                        setLoadingImages(false);
+                    }}
+                    className={`w-24 h-24 rounded-lg cursor-pointer transform transtion-transform duration-300
+                        hover:scale-110 ${loadingImages ? 'opacity-0' : 'opacity-100'}`}
+                    loading="lazy"
+                />
+
+                {/**Error state*/}
+                {failedImages.has(img) && (
+                    <div className="absolute inset-0 flex w-24 h-24 rounded-lg bg-red-500/20 flex items-cente justify-center">
+                        ❌
+                    </div>
+                )}
+            </div>
+        ))
     }
 
     return(
@@ -85,32 +124,25 @@ function ProfilePage({ user }) {
                 </div>
                 </div>
 
-                {/**Gallery*/}
-                <div className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg 
-                                w-full" 
-                >
-                    <h2 className="text-xl font-bold mb-4">Gallery</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        {user.images && user.images.map((image, index) => (
-                            <img
-                                key={index}
-                                src={image}
-                                alt={`Gallery Image ${index + 1}`}
-                                className="w-full h-32 object-cover rounded-lg cursor-pointer"
-                                onClick={() => openLightbox(image)}
-                            />
-                        ))}
-                    </div>
-                </div>
-                
-                {/**Lightbox*/}
-                {isLightboxOpen && (
-                    <Modal
-                        large={selectedImage}
-                        onClose={() => setIsLightboxOpen(false)}
+                {/** Images */}
+                <div className="mt-6 flex justify-center space-x-6">
+                    <ImageGrid
+                        images={images.slice(0, 3)}
+                        startIndex={0}
+                        handleImageClick={handleImageClick}
                     />
-                )}
+                </div>
+                <div className="mt-6 flex justify-center space-x-6">
+                    <ImageGrid
+                        images={images.slice(3)}
+                        startIndex={3}
+                        handleImageClick={handleImageClick}
+                    />
+                </div>
             </div>
+
+            {/**Modal*/}
+                                    
         </div>
     )
 }
