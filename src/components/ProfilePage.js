@@ -125,19 +125,22 @@ function ProfilePage({ user }) {
                 </div>
 
                 {/** Images */}
-                <div className="mt-6 flex justify-center space-x-6">
-                    <ImageGrid
-                        images={images.slice(0, 3)}
-                        startIndex={0}
-                        handleImageClick={handleImageClick}
-                    />
-                </div>
-                <div className="mt-6 flex justify-center space-x-6">
-                    <ImageGrid
+                <div className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg 
+                            w-full">
+                    <div className="mt-6 flex justify-center space-x-6">
+                        <ImageGrid
+                            images={images.slice(0, 3)}
+                            startIndex={0}
+                            handleImageClick={handleImageClick}
+                        />
+                    </div>
+                    <div className="mt-6 flex justify-center space-x-6">
+                        <ImageGrid
                         images={images.slice(3)}
                         startIndex={3}
                         handleImageClick={handleImageClick}
-                    />
+                        />
+                    </div>        
                 </div>
             </div>
 
