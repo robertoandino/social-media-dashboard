@@ -127,8 +127,8 @@ function ProfilePage({ user }) {
                 {/** Images */}
                 <div className="relative bg-gray-700 p-6 rounded-lg shadow-lg w-full">
                     <h2 className="text-xl font-bold mb-4">Gallery</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                        <div className="mt-6 flex justify-center space-x-6">
+                    <div className="grid grid-cols-2 md:grid-cols-1 gap-8">
+                        <div className="mt-6 flex justify-center space-x-12">
                             <ImageGrid
                                 images={images.slice(0, 3)}
                                 startIndex={0}
