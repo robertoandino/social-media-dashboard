@@ -142,7 +142,46 @@ function ProfilePage({ user }) {
             </div>
 
             {/**Modal*/}
-                                    
+            {selectedImageIndex !== null && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm"
+                    onClick={closeModal}
+                >
+                    <div className="relative rounded-lg p-4 max-w-[50vw] max-h-[100vh] overflow-auto">
+                        {/**Previous button*/}
+                        <button
+                            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/30 text-white
+                                    p-2 rounded-full hover:bg-white/50 transition-colors"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                goToPreviousImage();
+                            }}
+                        >
+                            &lt;
+                        </button>
+
+                        {/**Image*/}
+                        <img
+                            src={images[selectedImageIndex]}
+                            alt="Expanded"
+                            className="max-w-full max-h-full p-4"
+                            onClick={(e) => e.stopPropagation()}
+                        />
+
+                        {/**Next button*/}
+                        <button
+                            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/30 text-white
+                                    p-2 rounded-full hover:bg-white/50 transition-colors"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                goToNextImage();
+                            }}
+                        >
+                            &gt;
+                        </button>
+                    </div>
+                </div>
+            )}                    
         </div>
     )
 }
