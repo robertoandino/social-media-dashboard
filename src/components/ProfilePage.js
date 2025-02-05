@@ -108,7 +108,7 @@ function ProfilePage({ user }) {
                         {user.bio}
                     </p>
                 </div>
-                <div className="mt-6 flex justify-between text-center">
+                <div className="mt-6 flex justify-left text-center space-x-8">
                     <div>
                         <p className="text-lg font-semibold">{user.followers}</p>
                         <p className="text-gray-400">Followers</p>
@@ -126,16 +126,16 @@ function ProfilePage({ user }) {
 
                 {/** Images */}
                 <div className="relative bg-gray-700 p-6 rounded-lg shadow-lg w-full">
-                    <h2 className="text-xl font-bold mb-4">Gallery</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-1 gap-8">
-                        <div className="mt-6 flex justify-center space-x-12">
+                    <h2 className="text-xl font-bold mb-4 text-white">Gallery</h2>
+                    <div className="grid grid-cols-2 md:grid-cols-1 gap-3">
+                        <div className="mt-6 flex justify-left space-x-8">
                             <ImageGrid
                                 images={images.slice(0, 3)}
                                 startIndex={0}
                                 handleImageClick={handleImageClick}
                             />
                         </div>
-                        <div className="mt-6 flex justify-center space-x-6">
+                        <div className="mt-6 flex justify-left space-x-8">
                             <ImageGrid
                             images={images.slice(3)}
                             startIndex={3}
