@@ -128,20 +128,13 @@ function ProfilePage({ user }) {
                 <div className="relative bg-gray-700 p-6 rounded-lg shadow-lg w-full">
                     <h2 className="text-xl font-bold mb-4 text-white">Gallery</h2>
                     <div className="grid grid-cols-2 md:grid-cols-1 gap-3">
-                        <div className="mt-6 flex justify-left space-x-8">
+                        <div className="mt-6 flex justify-center space-x-8">
                             <ImageGrid
-                                images={images.slice(0, 3)}
+                                images={images.slice(0, 4)}
                                 startIndex={0}
                                 handleImageClick={handleImageClick}
                             />
-                        </div>
-                        <div className="mt-6 flex justify-left space-x-8">
-                            <ImageGrid
-                            images={images.slice(3)}
-                            startIndex={3}
-                            handleImageClick={handleImageClick}
-                            />
-                        </div>        
+                        </div>  
                     </div>
                 </div>
             </div>
