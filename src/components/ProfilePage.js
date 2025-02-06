@@ -74,8 +74,8 @@ function ProfilePage({ user }) {
                         className={`absolute top-0 left-0 w-full h-32 rounded-t-lg bg-gradient-to-r 
                                 ${user.color === "red" ? "from-yellow-500 via-orange-500 to-red-500" :
                                 user.color === "purple" ? "from-purple-500 via-indigo-400 to-indigo-400" :
-                                    "from-yellow-500 via-yellow-400 to-green-300"}`
-                        }
+                                    "from-yellow-500 via-yellow-400 to-green-300"}
+                                    bg-[length:200%_200%] animate-moving-gradient`}
                     >
                     </div>
 
@@ -141,14 +141,14 @@ function ProfilePage({ user }) {
                         </div>
                     </div>
                 </div>
-                
+
                 {/**Posts*/}
                 <div className="relative bg-gray-700 p-6 rounded-lg shadow-lg w-full
                             transfor transition-all duration-300 hover:shadow-2xl 
                             hover:scale-[1.02]"
                 >
                     <h2 className="text-xl font-bold mb-4 text-white">Posts</h2>
-                </div>     
+                </div>
 
             </div>
 
