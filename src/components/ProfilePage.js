@@ -141,6 +141,15 @@ function ProfilePage({ user }) {
                         </div>
                     </div>
                 </div>
+                
+                {/**Posts*/}
+                <div className="relative bg-gray-700 p-6 rounded-lg shadow-lg w-full
+                            transfor transition-all duration-300 hover:shadow-2xl 
+                            hover:scale-[1.02]"
+                >
+                    <h2 className="text-xl font-bold mb-4 text-white">Posts</h2>
+                </div>     
+
             </div>
 
             {/**Modal*/}
