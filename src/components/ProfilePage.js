@@ -126,7 +126,10 @@ function ProfilePage({ user }) {
                 </div>
 
                 {/** Images */}
-                <div className="relative bg-gray-700 p-6 rounded-lg shadow-lg w-full">
+                <div className="relative bg-gray-700 p-6 rounded-lg shadow-lg w-full
+                            transfor transition-all duration-300 hover:shadow-2xl 
+                            hover:scale-[1.02]"
+                >
                     <h2 className="text-xl font-bold mb-4 text-white">Gallery</h2>
                     <div className="grid grid-cols-2 md:grid-cols-1 gap-3">
                         <div className="mt-6 flex justify-center space-x-8">
