@@ -98,8 +98,8 @@ function ProfilePage({ user }) {
                         </div>
                         {/**User Info*/}
                         <div>
-                            <h2 className="text-xl font-bold mt-6">{user.user}</h2>
-                            <p className="text-gray-400">{user.job}</p>
+                            <h2 className="text-2xl font-bold tracking-wide text-gray-200 mt-6">{user.user}</h2>
+                            <p className="text-sm text-gray-400">{user.job}</p>
                         </div>
                     </div>
 
