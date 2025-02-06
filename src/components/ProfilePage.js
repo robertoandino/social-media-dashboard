@@ -65,8 +65,8 @@ function ProfilePage({ user }) {
             {/**Main Content Container*/}
             <div className="flex flex-col space-y-6 w-full max-w-6xl px-4">
                 {/**Profile Card*/}
-                <div className="relative bg-gray-700 text-white p-6 rounded-lg shadow-lg 
-                            w-full transform transition-all duration-300 hover:shadow-2xl 
+                <div className="relative bg-gray-800/80 text-white p-6 rounded-lg shadow-xl ring-1 ring-gray-600
+                            transition-transform duration-300 hover:shadow-2xl 
                             hover:scale-[1.02]"
                 >
                     {/**Background*/}
