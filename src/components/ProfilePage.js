@@ -109,19 +109,17 @@ function ProfilePage({ user }) {
                             {user.bio}
                         </p>
                     </div>
-                    <div className="mt-6 flex justify-left text-center space-x-8">
-                        <div>
-                            <p className="text-lg font-semibold">{user.followers}</p>
-                            <p className="text-gray-400">Followers</p>
-                        </div>
-                        <div>
-                            <p className="text-lg font-semibold">{user.posts}</p>
-                            <p className="text-gray-400">Posts</p>
-                        </div>
-                        <div>
-                            <p className="text-lg font-semibold">{user.likes}</p>
-                            <p className="text-gray-400">Likes</p>
-                        </div>
+                    <div className="mt-6 flex justify-between text-center space-x-4">
+                        {[
+                            { label: 'Followers', value: user.followers },
+                            { label: 'Following', value: user.followers },
+                            { label: 'Likes', value: user.likes },
+                        ].map((stat, index) => (
+                            <div key={index} className="group transition-transform hover:scale-110">
+                                <p className="text-lg font-semibold text-white group-hover:text-primary">{stat.value}</p>
+                                <p className="text-gray-400 text-sm">{stat.label}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
