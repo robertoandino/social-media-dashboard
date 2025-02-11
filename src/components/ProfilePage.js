@@ -146,6 +146,7 @@ function ProfilePage({ user }) {
                             hover:scale-[1.02]"
                 >
                     <h2 className="text-xl font-bold mb-4 text-white">Posts</h2>
+                    <p cassName="text-gray-300"> List of posts here</p>
                 </div>
 
             </div>
