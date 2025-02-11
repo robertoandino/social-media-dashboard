@@ -141,7 +141,7 @@ function ProfilePage({ user }) {
                 </div>
 
                 {/**Posts*/}
-                <div className="relative bg-gray-800/80 p-6 rounded-lg shadow-lg w-full
+                <div className="relative bg-gray-800/80 p-6 rounded-lg shadow-xl ring-1 ring-gray-600 w-full
                             transfor transition-all duration-300 hover:shadow-2xl 
                             hover:scale-[1.02]"
                 >
