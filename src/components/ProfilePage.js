@@ -147,6 +147,15 @@ function ProfilePage({ user }) {
                 >
                     <h2 className="text-xl font-bold mb-4 text-white">Posts</h2>
                     <p cassName="text-gray-300"> List of posts here</p>
+                    {[
+                        { label: 'Post 1'},
+                        { label: 'Post 2'},
+                        { label: 'Post 3'},
+                        ].map((stat, index) => (
+                            <div key={index} className="group transition-transform hover:scale-110">
+                                <p className="text-gray-400 text-lg mt-5">{stat.label}</p>
+                            </div>
+                        ))}
                 </div>
 
             </div>
