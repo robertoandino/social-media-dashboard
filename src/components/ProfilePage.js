@@ -146,9 +146,9 @@ function ProfilePage({ user }) {
                 >
                     <h2 className="text-xl font-bold mb-4 text-white">Posts</h2>
                     {[
-                        { label: 'Building first React App! ', date: '2 hours ago', likes: 32 },
-                        { label: 'Just finished a full-stacj project! ', date: 'Yesterday', likes: 56 },
-                        { label: 'Learning Tailwind CSS is fun! ', date: '2 days ago', likes: 21 },
+                        { label: 'Building first React App! 🚀', date: '2 hours ago', likes: 32 },
+                        { label: 'Just finished a full-stacj project! 💻', date: 'Yesterday', likes: 56 },
+                        { label: 'Learning Tailwind CSS is fun! 🎨', date: '2 days ago', likes: 21 },
                     ].map((post, index) => (
                             <div 
                                 key={index} 
