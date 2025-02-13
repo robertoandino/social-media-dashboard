@@ -145,7 +145,6 @@ function ProfilePage({ user }) {
                             transfor transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
                 >
                     <h2 className="text-xl font-bold mb-4 text-white">Posts</h2>
-                    <p cassName="text-gray-300"> List of posts here</p>
                     {[
                         { label: 'Building first React App! ', date: '2 hours ago', likes: 32 },
                         { label: 'Just finished a full-stacj project! ', date: 'Yesterday', likes: 56 },
