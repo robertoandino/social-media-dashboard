@@ -142,16 +142,15 @@ function ProfilePage({ user }) {
 
                 {/**Posts*/}
                 <div className="relative bg-gray-800/80 p-6 rounded-lg shadow-xl ring-1 ring-gray-600 w-full
-                            transfor transition-all duration-300 hover:shadow-2xl 
-                            hover:scale-[1.02]"
+                            transfor transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
                 >
                     <h2 className="text-xl font-bold mb-4 text-white">Posts</h2>
                     <p cassName="text-gray-300"> List of posts here</p>
                     {[
-                        { label: 'Post 1'},
-                        { label: 'Post 2'},
-                        { label: 'Post 3'},
-                        ].map((stat, index) => (
+                        { label: 'Building first React App! ', date: '2 hours ago', likes: 32 },
+                        { label: 'Just finished a full-stacj project! ', date: 'Yesterday', likes: 56 },
+                        { label: 'Learning Tailwind CSS is fun! ', date: '2 days ago', likes: 21 },
+                    ].map((stat, index) => (
                             <div key={index} className="group transition-transform hover:scale-110">
                                 <p className="text-gray-400 text-lg mt-5">{stat.label}</p>
                             </div>
