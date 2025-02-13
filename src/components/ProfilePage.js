@@ -149,13 +149,17 @@ function ProfilePage({ user }) {
                         { label: 'Building first React App! ', date: '2 hours ago', likes: 32 },
                         { label: 'Just finished a full-stacj project! ', date: 'Yesterday', likes: 56 },
                         { label: 'Learning Tailwind CSS is fun! ', date: '2 days ago', likes: 21 },
-                    ].map((stat, index) => (
+                    ].map((post, index) => (
                             <div 
                                 key={index} 
                                 className="bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] 
                                         transition-transform flex items-start space-x-4 mt-5"
+                            
                             >
+                                {/**Profile Icon*/}
+                                <div className="w-12 h-12 rounded-full bg-gray-500 flex items-center justify-center text-white font-bold">
                                 
+                                </div>
                             </div>
                         ))}
                 </div>
