@@ -150,8 +150,12 @@ function ProfilePage({ user }) {
                         { label: 'Just finished a full-stacj project! ', date: 'Yesterday', likes: 56 },
                         { label: 'Learning Tailwind CSS is fun! ', date: '2 days ago', likes: 21 },
                     ].map((stat, index) => (
-                            <div key={index} className="group transition-transform hover:scale-110">
-                                <p className="text-gray-400 text-lg mt-5">{stat.label}</p>
+                            <div 
+                                key={index} 
+                                className="bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] 
+                                        transition-transform flex items-start space-x-4 mt-5"
+                            >
+                                
                             </div>
                         ))}
                 </div>
