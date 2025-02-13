@@ -158,8 +158,11 @@ function ProfilePage({ user }) {
                             >
                                 {/**Profile Icon*/}
                                 <div className="w-12 h-12 rounded-full bg-gray-500 flex items-center justify-center text-white font-bold">
-                                
+                                    {user.user[0]}
                                 </div>
+
+                                {/**Post Content*/}
+                                
                             </div>
                         ))}
                 </div>
