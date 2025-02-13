@@ -162,7 +162,10 @@ function ProfilePage({ user }) {
                                 </div>
 
                                 {/**Post Content*/}
-                                
+                                <div className="flex-1">
+                                    <p className="text-white font-medium">{post.label}</p>
+                                    <p className="text-gray-400 text-sm mt-1">{post.date}</p>
+                                </div>
                             </div>
                         ))}
                 </div>
