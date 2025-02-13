@@ -166,6 +166,11 @@ function ProfilePage({ user }) {
                                     <p className="text-white font-medium">{post.label}</p>
                                     <p className="text-gray-400 text-sm mt-1">{post.date}</p>
                                 </div>
+
+                                {/**Likes*/}
+                                <div className="text-gray-400 text-sm flex items-center space-x-1">
+                                    ❤️ <span>{post.likes}</span>
+                                </div>
                             </div>
                         ))}
                 </div>
