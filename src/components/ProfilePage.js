@@ -147,7 +147,7 @@ function ProfilePage({ user }) {
                     <h2 className="text-xl font-bold mb-4 text-white">Posts</h2>
                     {[
                         { label: 'Building first React App! 🚀', date: '2 hours ago', likes: 32 },
-                        { label: 'Just finished a full-stacj project! 💻', date: 'Yesterday', likes: 56 },
+                        { label: 'Just finished a full-stack project! 💻', date: 'Yesterday', likes: 56 },
                         { label: 'Learning Tailwind CSS is fun! 🎨', date: '2 days ago', likes: 21 },
                     ].map((post, index) => (
                             <div 
@@ -157,17 +157,22 @@ function ProfilePage({ user }) {
                             
                             >
                                 {/**Profile Icon*/}
-                                <div className={`p-0.5 rounded-full bg-gradient-to-r
+                                <div className={`
+                                    p-0.5 rounded-full bg-gradient-to-r
                                     ${user.color === "red" ? "from-yellow-500 via-orange-500 to-red-500" :
                                     user.color === "purple" ? "from-purple-500 via-indigo-400 to-indigo-400" :
-                                    "from-yellow-500 via-yellow-400 to-green-300"} transition-transform hover:-translate-y-1`
+                                    "from-yellow-500 via-yellow-400 to-green-300"} 
+                                    transition-all duration-300 hover:-translate-y-1 hover:scale-105-group`
                                 }
                                 >
-                                    <div className="w-12 h-12 border-2 border-gray-800 rounded-full p-2 bg-gray-800">
+                                    <div className="w-12 h-12 border-2 border-gray-800 rounded-full p-2 bg-gray-800
+                                        group-hover:border-opacity-50">
                                         <img
                                             src={user.avatar}
                                             alt="Profile Avatar"
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-cover rounded-full transform
+                                                transition-transform duration-300 group-hover:rotate-6"
+                                            loading="lazy"
                                         />
                                     </div>
                                 </div>
