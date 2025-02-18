@@ -157,14 +157,20 @@ function ProfilePage({ user }) {
                             
                             >
                                 {/**Profile Icon*/}
-                                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-800 flex items-center justify-center">
-                                    <img
-                                        src={user.avatar}
-                                        alt="Profile Avatar"
-                                        className="w-full h-full object-cover"
-                                    />
+                                <div className={`p-0.5 rounded-full bg-gradient-to-r
+                                    ${user.color === "red" ? "from-yellow-500 via-orange-500 to-red-500" :
+                                    user.color === "purple" ? "from-purple-500 via-indigo-400 to-indigo-400" :
+                                    "from-yellow-500 via-yellow-400 to-green-300"} transition-transform hover:-translate-y-1`
+                                }
+                                >
+                                    <div className="w-12 h-12 border-2 border-gray-800 rounded-full p-2 bg-gray-800">
+                                        <img
+                                            src={user.avatar}
+                                            alt="Profile Avatar"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
                                 </div>
-
                                 {/**Post Content*/}
                                 <div className="flex-1">
                                     <p className="text-white font-medium">{post.label}</p>
