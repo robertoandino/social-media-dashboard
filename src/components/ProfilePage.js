@@ -157,8 +157,12 @@ function ProfilePage({ user }) {
                             
                             >
                                 {/**Profile Icon*/}
-                                <div className="w-12 h-12 rounded-full bg-gray-500 flex items-center justify-center text-white font-bold">
-                                    {user.user[0]}
+                                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-800 flex items-center justify-center">
+                                    <img
+                                        src={user.avatar}
+                                        alt="Profile Avatar"
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
 
                                 {/**Post Content*/}
